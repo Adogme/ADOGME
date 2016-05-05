@@ -6,7 +6,7 @@ return new \Phalcon\Config(array(
         'host'     => 'localhost',
         'username' => 'root',
         'password' => '',
-        'dbname'   => 'ADOGME',
+        'dbname'   => 'bd_adogme',
         'charset'  => 'utf8',
     ),
     'application' => array(
