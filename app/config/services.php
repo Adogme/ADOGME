@@ -12,11 +12,38 @@ use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Flash\Direct as Flash;
+use Phalcon\Mvc\Collection\Manager;
+use Phalcon\Mvc\Collection;
+use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Mvc\Dispatcher;
 
 /**
  * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
  */
 $di = new FactoryDefault();
+
+/**
+ * We register the events manager
+ */
+$di->set('dispatcher', function () use ($di) {
+
+    $eventsManager = new EventsManager;
+
+    /**
+     * Check if the user is allowed to access certain action using the SecurityPlugin
+     */
+    $eventsManager->attach('dispatch:beforeDispatch', new SecurityPlugin);
+
+    /**
+     * Handle exceptions and not-found exceptions using NotFoundPlugin
+     */
+    //$eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
+
+    $dispatcher = new Dispatcher;
+    $dispatcher->setEventsManager($eventsManager);
+
+    return $dispatcher;
+});
 
 /**
  * The URL component is used to generate all kind of urls in the application
@@ -58,7 +85,7 @@ $di->setShared('view', function () use ($config) {
 /**
  * Database connection is created based in the parameters defined in the configuration file
  */
-$di->setShared('db', function () use ($config) {
+/*$di->setShared('db', function () use ($config) {
     $dbConfig = $config->database->toArray();
     $adapter = $dbConfig['adapter'];
     unset($dbConfig['adapter']);
@@ -66,7 +93,15 @@ $di->setShared('db', function () use ($config) {
     $class = 'Phalcon\Db\Adapter\Pdo\\' . $adapter;
 
     return new $class($dbConfig);
-});
+});*/
+$di->set('mongo', function () {
+    $mongo = new MongoClient('mongodb://adogme:adogme2016@ds053190.mlab.com:53190/adogme');
+    return $mongo->selectDB("adogme");
+}, true);
+
+$di->set('collectionManager', function(){
+    return new Manager();
+}, true);
 
 /**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise

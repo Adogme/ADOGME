@@ -2,9 +2,11 @@
 
 error_reporting(E_ALL);
 
-define('APP_PATH', realpath('..'));
+use Phalcon\Mvc\Application;
 
 try {
+
+    define('APP_PATH', realpath('..'));
 
     /**
      * Read the configuration
@@ -24,7 +26,7 @@ try {
     /**
      * Handle the request
      */
-    $application = new \Phalcon\Mvc\Application($di);
+    $application = new Application($di);
 
     echo $application->handle()->getContent();
 

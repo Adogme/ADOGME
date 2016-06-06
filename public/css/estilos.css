@@ -1,0 +1,73 @@
+body {
+	padding-top: 80px;
+}
+
+#navbar-1 ul li a {
+	color:#fff;
+	line-height: 80px;
+	font-size: 14px;
+	padding: 0 18px;
+	outline: 0;
+}
+
+.cabecera {
+	background-color: #4DB788;
+	border: 0;
+	margin-bottom: 0;
+}
+
+.cabecera .container-fluid .navbar-header a.navbar-brand {
+	color:#fff;
+	background-color: #332F3E;
+	padding-top: 0;
+	padding-bottom: 0;
+	line-height: 80px;
+	height: 80px;
+	width: 100px;
+	margin-right: 20px;
+	border-bottom: 1px solid #474646;
+}
+
+#cabecera-login {
+	color:#fff;
+	text-decoration: none;
+	line-height: 80px;
+	font-size: 14px;
+	padding: 0 18px;
+	outline: 0;
+}
+
+#contenido {
+
+}
+
+#fomulario-login {
+
+}
+
+.left-sidebar {
+	background-color: #332F3E;
+	width: 100px;
+	height: 100%;
+	left: 0;
+	position: absolute;
+}
+
+.left-sidebar .content ul {
+	margin: 0;
+	padding: 0;
+}
+
+.left-sidebar .content ul li {
+	border-bottom: 1px solid #474646;
+	list-style: none;
+}
+
+.left-sidebar .content ul li a {
+	color: #e1e1e1;
+	display: block;
+	padding: 15px;
+	text-align: center;
+	font-size: 12px;
+	text-decoration: none;
+}
