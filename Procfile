@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-apache2 adogme/public
+web: vendor/bin/heroku-php-apache2 ADOGME/public
