@@ -4,6 +4,7 @@ use Phalcon\Forms\Form;
 use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Element\Password;
 use Phalcon\Forms\Element\Radio;
+use Phalcon\Forms\Element\Date;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\Confirmation;
@@ -126,5 +127,10 @@ class RegistroForm extends Form
         $mujer->setLabel('Mujer');
         $this->add($hombre);
         $this->add($mujer);
+
+        //fechaNacimiento
+        $fechaNacimiento = new Date('fechaNacimiento');
+        $fechaNacimiento->setLabel('Fecha Nacimiento');
+        $this->add($fechaNacimiento);
     }
 }

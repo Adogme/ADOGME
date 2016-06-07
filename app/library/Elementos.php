@@ -20,10 +20,14 @@ class Elementos extends Component
             ),
         ),
         'navbar-right' => array(
-            'registro' => array(
-                'caption' => 'Iniciar Sesion',
+            'cuenta' =>array(
+                'caption' => 'Usuario',
                 'action' => 'index'
             ),
+            'sesion' => array(
+                'caption' => 'Iniciar Sesion',
+                'action' => 'index'
+            )
         )
     );
 
@@ -31,30 +35,35 @@ class Elementos extends Component
 
     	$auth = $this->session->get('auth');
         if ($auth) {
-            $this->_headerMenu['navbar-right']['session'] = array(
+            $this->_headerMenu['navbar-right']['sesion'] = array(
                 'caption' => 'Cerrar Sesion',
-                'action' => 'end'
+                'action' => 'logout'
+            );
+            $this->_headerMenu['navbar-right']['cuenta'] = array(
+                'caption' => $auth["nombre"],
+                'action' => 'index'
             );
         } else {
-            unset($this->_headerMenu['navbar-left']['invoices']);
+            unset($this->_headerMenu['navbar-right']['cuenta']);
         }
 
         $controllerName = $this->view->getControllerName();
+        echo '<div class="collapse navbar-collapse" id="navbar-1">';
         foreach ($this->_headerMenu as $position => $menu) {
-            echo '<div class="collapse navbar-collapse" id="navbar-1">';
             echo '<ul class="nav navbar-nav ', $position, '">';
             foreach ($menu as $controller => $option) {
-                if ($controllerName == $controller) {
+                /*if ($controllerName == $controller) {
                     echo '<li class="active">';
                 } else {
                     echo '<li>';
-                }
+                }*/
+                echo '<li>';
                 echo $this->tag->linkTo($controller . '/' . $option['action'], $option['caption']);
                 echo '</li>';
             }
             echo '</ul>';
-            echo '</div>';
         }
+        echo '</div>';
 
     }
 }

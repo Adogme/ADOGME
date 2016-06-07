@@ -27,7 +27,8 @@
 
 				<div class="form-group form-inline">
 					{{ form.render('telefono', ['class': 'form-control']) }}
-
+					{{ form.label('fechaNacimiento') }}
+					{{ form.render('fechaNacimiento', ['class': 'form-control']) }}
 					<!--<input type="number" placeholder="dd" class="form-control">
 					<input type="number" placeholder="mm" class="form-control">
 					<input type="number" placeholder="yyyy" class="form-control">-->

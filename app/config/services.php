@@ -131,3 +131,7 @@ $di->setShared('session', function () {
 
     return $session;
 });
+
+$di->set('elements', function () {
+    return new Elementos();
+});

@@ -27,7 +27,8 @@
 
 				<div class="form-group form-inline">
 					<?php echo $form->render('telefono', array('class' => 'form-control')); ?>
-
+					<?php echo $form->label('fechaNacimiento'); ?>
+					<?php echo $form->render('fechaNacimiento', array('class' => 'form-control')); ?>
 					<!--<input type="number" placeholder="dd" class="form-control">
 					<input type="number" placeholder="mm" class="form-control">
 					<input type="number" placeholder="yyyy" class="form-control">-->
