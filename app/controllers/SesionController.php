@@ -15,6 +15,14 @@ class SesionController extends ControllerBase
     	$this->view->form = $form;
     }
 
+    private function _registrarSesion(Usuarios $usuario)
+    {
+        $this->session->set('auth', array(
+                'id'   => $usuario->getId(),
+                'nombre' => $usuario->nombre
+        ));
+    }
+
     public function loginAction()
     {
     	if (!$this->request->isPost()) {
@@ -26,31 +34,27 @@ class SesionController extends ControllerBase
             $usuario = Usuarios::findFirst(
             	array(
             		"conditions" => array(
-            			'email' => $email,
-            			'password' => sha1($password)
+            			'email' => $email
             		)
             	)
             );
 
             if ($usuario) {
-            	$this->_registrarSesion($usuario);
-
-            	return $this->response->redirect('Cuenta');
+                if ($this->security->checkHash($password, $usuario->password)) {
+                    $this->_registrarSesion($usuario);
+                    return $this->response->redirect('cuenta');
+                }
             }
 
-            $this->flash->error('Wrong email/password');
+            $this->flash->error('Wrong email/password ' . $this->security->hash($password));
     	}
     }
 
-    private function _registrarSesion($usuario)
+    public function logoutAction()
     {
-        $this->session->set(
-            'auth',
-            array(
-                //'id'   => $usuario->getId(),
-                'name' => $usuario->name
-            )
-        );
+        $this->session->remove('auth');
+        $this->flash->success('Goodbye!');
+        return $this->forward('sesion/index');
     }
 }
 

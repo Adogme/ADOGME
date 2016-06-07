@@ -10,7 +10,8 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a href="#" class="navbar-brand" id="cabecera-logo">Adogme</a>
+                    <!--<a href="#" class="navbar-brand" id="cabecera-logo">Adogme</a>-->
+                    <?php echo $this->tag->linkTo(array('index', 'Adogme', 'class' => 'navbar-brand', 'id' => 'cabcera-logo')); ?>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbar-1">
@@ -21,7 +22,12 @@
                     </ul>
 
                     <!--<a href="sesion/index" class="nav navbar-nav navbar-right" id="cabecera-login">Iniciar Sesion</a>-->
-                    <?php echo $this->tag->linkTo(array('sesion', 'Iniciar Sesion', 'class' => 'nav navbar-nav navbar-right', 'id' => 'cabecera-login')); ?>
+                    <?php if (!$this->session->get('auth')) { ?>
+                        <?php echo $this->tag->linkTo(array('sesion', 'Iniciar Sesion', 'class' => 'nav navbar-nav navbar-right', 'id' => 'cabecera-login')); ?>
+                    <?php } else { ?>
+                        <?php echo $this->tag->linkTo(array('sesion/logout', 'Cerrar Sesion', 'class' => 'nav navbar-nav navbar-right', 'id' => 'cabecera-login')); ?>
+                        <?php echo $this->tag->linkTo(array('cuenta', 'Usuario', 'class' => 'nav navbar-nav navbar-right', 'id' => 'cabecera-login')); ?>
+                    <?php } ?>
                 </div>
             </div>
         </nav>

@@ -10,7 +10,8 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a href="#" class="navbar-brand" id="cabecera-logo">Adogme</a>
+                    <!--<a href="#" class="navbar-brand" id="cabecera-logo">Adogme</a>-->
+                    {{ link_to('index', 'Adogme', 'class':'navbar-brand', 'id': 'cabcera-logo') }}
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbar-1">
@@ -21,7 +22,12 @@
                     </ul>
 
                     <!--<a href="sesion/index" class="nav navbar-nav navbar-right" id="cabecera-login">Iniciar Sesion</a>-->
-                    {{ link_to('sesion', 'Iniciar Sesion', 'class': 'nav navbar-nav navbar-right', 'id': 'cabecera-login') }}
+                    {% if !session.get('auth') %}
+                        {{ link_to('sesion', 'Iniciar Sesion', 'class': 'nav navbar-nav navbar-right', 'id': 'cabecera-login') }}
+                    {% else %}
+                        {{ link_to('sesion/logout', 'Cerrar Sesion', 'class': 'nav navbar-nav navbar-right', 'id': 'cabecera-login') }}
+                        {{ link_to('cuenta', 'Usuario', 'class': 'nav navbar-nav navbar-right', 'id': 'cabecera-login') }}
+                    {% endif %}
                 </div>
             </div>
         </nav>

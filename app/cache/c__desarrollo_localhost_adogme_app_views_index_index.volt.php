@@ -1,1 +1,1 @@
-<header>Home</header>
+<h1>Home</h1>

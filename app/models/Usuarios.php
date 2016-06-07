@@ -44,8 +44,4 @@ class Usuarios extends Collection
         $datetime = new DateTime("now", new DateTimeZone('America/Lima'));
         $this->fechaRegistro = $datetime->format('Y-m-d H:i:s');
     }
-
-    public function beforeSave() {
-        $this->password = sha1($this->password);
-    }
 }
