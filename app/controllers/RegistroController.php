@@ -45,5 +45,91 @@ class RegistroController extends ControllerBase
         $this->view->form = $form;
     }
 
+    public function ajaxPaisAction()
+    {
+        $this->view->disable();
+
+        if($this->request->isGet()) {
+            if($this->request->isAjax()) {
+                if(!isset($_REQUEST['term']))
+                    exit();
+
+                $input = $_GET['term'];
+                $paises = Paises::find(
+                    array(
+                        'conditions' => array('nombre' => new MongoRegex('/^'.$input.'/i')),
+                        'limit' => 5
+                    )
+                );
+
+                $data = array();
+
+                foreach ($paises as $pais) {
+                    $data[] = $pais->nombre;
+                }
+
+                $this->response->setJsonContent($data);
+                $this->response->send();
+            }
+        }
+    }
+
+    public function ajaxCiudadAction()
+    {
+        $this->view->disable();
+
+        if($this->request->isGet()) {
+            if($this->request->isAjax()) {
+                if(!isset($_REQUEST['term']))
+                    exit();
+
+                $input = $_GET['term'];
+                $ciudades = Ciudades::find(
+                    array(
+                        'conditions' => array('nombre' => new MongoRegex('/^'.$input.'/i')),
+                        'limit' => 5
+                    )
+                );
+
+                $data = array();
+
+                foreach ($ciudades as $ciudad) {
+                    $data[] = $ciudad->nombre;
+                }
+
+                $this->response->setJsonContent($data);
+                $this->response->send();
+            }
+        }
+    }
+
+    public function ajaxDistritoAction()
+    {
+        $this->view->disable();
+
+        if($this->request->isGet()) {
+            if($this->request->isAjax()) {
+                if(!isset($_REQUEST['term']))
+                    exit();
+
+                $input = $_GET['term'];
+                $distritos = Distritos::find(
+                    array(
+                        'conditions' => array('nombre' => new MongoRegex('/^'.$input.'/i')),
+                        'limit' => 5
+                    )
+                );
+
+                $data = array();
+
+                foreach ($distritos as $distrito) {
+                    $data[] = $distrito->nombre;
+                }
+
+                $this->response->setJsonContent($data);
+                $this->response->send();
+            }
+        }
+    }
 }
 

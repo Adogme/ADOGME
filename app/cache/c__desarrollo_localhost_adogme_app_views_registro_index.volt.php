@@ -29,9 +29,6 @@
 					<?php echo $form->render('telefono', array('class' => 'form-control')); ?>
 					<?php echo $form->label('fechaNacimiento'); ?>
 					<?php echo $form->render('fechaNacimiento', array('class' => 'form-control')); ?>
-					<!--<input type="number" placeholder="dd" class="form-control">
-					<input type="number" placeholder="mm" class="form-control">
-					<input type="number" placeholder="yyyy" class="form-control">-->
 				</div>
 
 				<div class="form-group form-inline">
@@ -57,3 +54,19 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(function() {
+		$('#pais').autocomplete({
+			source : "<?php echo $this->url->get('registro/ajaxPais') ?>"  //['Lima', 'Trujillo', 'Piura', 'Arequipa']
+		});
+
+		$('#ciudad').autocomplete({
+			source : "<?php echo $this->url->get('registro/ajaxCiudad') ?>"  //['Lima', 'Trujillo', 'Piura', 'Arequipa']
+		});
+
+		$('#distrito').autocomplete({
+			source : "<?php echo $this->url->get('registro/ajaxDistrito') ?>"  //['Lima', 'Trujillo', 'Piura', 'Arequipa']
+		});
+	});
+</script>

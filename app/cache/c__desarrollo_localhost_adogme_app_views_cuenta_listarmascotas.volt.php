@@ -1,5 +1,3 @@
 <?php echo $this->getContent(); ?>
 
-<h1>
-	Cuenta
-</h1>
+<h1>Mis Mascotas</h1>

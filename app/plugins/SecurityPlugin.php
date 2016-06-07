@@ -39,7 +39,7 @@ class SecurityPlugin extends Plugin
 
 			//Private area resources
 			$privateResources = array(
-				'cuenta'    => array('index'),
+				'cuenta'    => array('index', 'listarAdopciones', 'listarFavoritos', 'listarMascotas', 'registrarMascota'),
 				'adopcion'	=> array('index'),
 				'sesion'	=> array('logout')
 			);
@@ -50,7 +50,7 @@ class SecurityPlugin extends Plugin
 			//Public area resources
 			$publicResources = array(
 				'index'      => array('index'),
-				'registro'   => array('index'),
+				'registro'   => array('index', 'ajaxCiudad', 'ajaxPais', 'ajaxDistrito'),
 				'sesion'     => array('index', 'login')
 			);
 			foreach ($publicResources as $resource => $actions) {
