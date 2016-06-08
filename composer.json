@@ -1,5 +1,5 @@
 {
 	"requiere": {
-		"ext-phalcon": "2.0.9"
+		"phalcon/incubator": "dev-master"
 	}
 }
