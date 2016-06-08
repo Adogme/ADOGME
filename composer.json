@@ -1,5 +1,1 @@
-{
-	"requiere": {
-		"phalcon/incubator": "dev-master"
-	}
-}
+{}
