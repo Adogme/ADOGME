@@ -6,14 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?php echo $this->tag->getTitle(); ?>
         
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/jquery-ui.structure.min.css">
-        <link rel="stylesheet" href="css/jquery-ui.theme.min.css">
-        <link rel="stylesheet" href="css/estilos.css">
+        <?php echo $this->tag->stylesheetLink('css/bootstrap.min.css'); ?>
+        <?php echo $this->tag->stylesheetLink('css/jquery-ui.structure.min.css'); ?>
+        <?php echo $this->tag->stylesheetLink('css/jquery-ui.theme.min.css'); ?>
+        <?php echo $this->tag->stylesheetLink('css/estilos.css'); ?>
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery-ui.min.js"></script>
+        <?php echo $this->tag->javascriptInclude('js/jquery.min.js'); ?>
+        <?php echo $this->tag->javascriptInclude('js/bootstrap.min.js'); ?>
+        <?php echo $this->tag->javascriptInclude('js/jquery-ui.min.js'); ?>
         <meta name="author" content="kyo">
     </head>
     <body>
