@@ -18,7 +18,6 @@ class RegistroController extends ControllerBase
             if (!$form->isValid($_POST)) {
                 foreach ($form->getMessages() as $message) {
                     $this->flash->error($message);
-                    //echo $message, '<br>';
                 }
             } else {
                 $usuario = new Usuarios();

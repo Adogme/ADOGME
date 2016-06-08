@@ -5,18 +5,19 @@ use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Element\Numeric;
 use Phalcon\Forms\Element\Password;
 use Phalcon\Forms\Element\Radio;
+use Phalcon\Forms\Element\Check;
 use Phalcon\Forms\Element\Date;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\Confirmation;
 
-class RegistroMascota extends Form
+class RegistroMascotaForm extends Form
 {
 	public function initialize($entity = null, $options = null)
 	{
 		//Nombre
 		$nombre = new Text('nombre', array('placeholder' => 'Nombre'));
-		$nombre->setFilter(array('striptags', 'string', 'trim'));
+		$nombre->setFilters(array('striptags', 'string', 'trim'));
 		$nombre->addValidators(array(
             new PresenceOf(array(
                 'message' => 'Nombre Obligatorio'
@@ -26,7 +27,7 @@ class RegistroMascota extends Form
 
 		//Raza
 		$raza = new Text('raza', array('placeholder' => 'Raza'));
-		$raza->setFilter(array('striptags', 'string', 'trim'));
+		$raza->setFilters(array('striptags', 'string', 'trim'));
 		$this->add($raza);
 
 		//Peso
@@ -43,7 +44,7 @@ class RegistroMascota extends Form
 
 		//Descripcion
 		$descripcion = new Text('descripcion', array('placeholder' => 'Descripcion'));
-		$raza->setFilter(array('string', 'trim'));
+		$raza->setFilters(array('string', 'trim'));
 		$this->add($descripcion);
 
 		//Pelo
@@ -60,7 +61,8 @@ class RegistroMascota extends Form
         $this->add($peloL);
 
 		//Vacuna
-		$vacuna = new Check('vacuna');
+		$vacuna = new Check('vacuna', array('value' => '1'));
+		$vacuna->setLabel('Vacuna');
 		$this->add($vacuna);
 
 		//Enfermedades

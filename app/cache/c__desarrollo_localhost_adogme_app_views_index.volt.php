@@ -17,6 +17,5 @@
     </head>
     <body>
         <?php echo $this->getContent(); ?>
-        
     </body>
 </html>
