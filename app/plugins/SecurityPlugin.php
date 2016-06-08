@@ -40,7 +40,6 @@ class SecurityPlugin extends Plugin
 			//Private area resources
 			$privateResources = array(
 				'cuenta'    => array('index', 'listarAdopciones', 'listarFavoritos', 'listarMascotas', 'registrarMascota'),
-				'adopcion'	=> array('index'),
 				'sesion'	=> array('logout')
 			);
 			foreach ($privateResources as $resource => $actions) {
@@ -51,7 +50,8 @@ class SecurityPlugin extends Plugin
 			$publicResources = array(
 				'index'      => array('index'),
 				'registro'   => array('index', 'ajaxCiudad', 'ajaxPais', 'ajaxDistrito'),
-				'sesion'     => array('index', 'login')
+				'sesion'     => array('index', 'login'),
+				'adopcion'	 => array('index')
 			);
 			foreach ($publicResources as $resource => $actions) {
 				$acl->addResource(new Resource($resource), $actions);
