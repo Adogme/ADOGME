@@ -71,3 +71,12 @@ body {
 	font-size: 12px;
 	text-decoration: none;
 }
+
+li{
+	font-family: 'Signika', sans-serif;
+	font-size: 20px;
+}
+
+#navbar-1 ul li a{
+	color:black;
+}
