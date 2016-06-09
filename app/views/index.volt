@@ -9,6 +9,7 @@
         {{ stylesheet_link('css/bootstrap.min.css') }}
         {{ stylesheet_link('css/jquery-ui.structure.min.css') }}
         {{ stylesheet_link('css/jquery-ui.theme.min.css') }}
+        {{ stylesheet_link('https://fonts.googleapis.com/css?family=Signika:700',false) }}
         {{ stylesheet_link('css/estilos.css') }}
 
 
