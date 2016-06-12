@@ -70,3 +70,63 @@ class RegistroMascotaForm extends Form
 
 	}
 }
+
+class EdicionMascotaForm extends Form
+{
+	public function initialize($entity = null, $options = null)
+	{
+		//Nombre
+		$nombre = new Text('nombre', array('placeholder' => 'Nombre'));
+		$nombre->setFilters(array('striptags', 'string', 'trim'));
+		$nombre->addValidators(array(
+            new PresenceOf(array(
+                'message' => 'Nombre Obligatorio'
+            ))
+        ));
+        $this->add($nombre);
+
+		//Raza
+		$raza = new Text('raza', array('placeholder' => 'Raza'));
+		$raza->setFilters(array('striptags', 'string', 'trim'));
+		$this->add($raza);
+
+		//Peso
+		$peso = new Numeric('peso', array('placeholder' => 'Peso'));
+		$this->add($peso);
+
+		//Altura
+		$altura = new Numeric('altura', array('placeholder' => 'Altura'));
+		$this->add($altura);
+
+		//Edad
+		$edad = new Numeric('edad', array('placeholder' => 'Edad'));
+		$this->add($edad);
+
+		//Descripcion
+		$descripcion = new Text('descripcion', array('placeholder' => 'Descripcion'));
+		$raza->setFilters(array('string', 'trim'));
+		$this->add($descripcion);
+
+		//Pelo
+		$peloS = new Radio('small', array('name' => 'pelo', 'value' => 'S'));
+        $peloS->setLabel('S');
+        $this->add($peloS);
+
+        $peloM = new Radio('medium', array('name' => 'pelo', 'value' => 'M'));
+        $peloM->setLabel('M');
+        $this->add($peloM);
+
+        $peloL = new Radio('large', array('name' => 'pelo', 'value' => 'L'));
+        $peloL->setLabel('L');
+        $this->add($peloL);
+
+		//Vacuna
+		$vacuna = new Check('vacuna', array('value' => '1'));
+		$vacuna->setLabel('Vacuna');
+		$this->add($vacuna);
+
+		//Enfermedades
+
+
+	}
+}

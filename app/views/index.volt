@@ -10,6 +10,7 @@
         {{ stylesheet_link('css/jquery-ui.structure.min.css') }}
         {{ stylesheet_link('css/jquery-ui.theme.min.css') }}
         {{ stylesheet_link('https://fonts.googleapis.com/css?family=Signika:700',false) }}
+        {{ stylesheet_link('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css',false) }}
         {{ stylesheet_link('css/estilos.css') }}
 
 

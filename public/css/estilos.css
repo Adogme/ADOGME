@@ -21,7 +21,7 @@ body {
 	background-color: #332F3E;
 	padding-top: 0;
 	padding-bottom: 0;
-	line-height: 80px;
+	line-height: 50px;
 	height: 80px;
 	width: 100px;
 	margin-right: 20px;
@@ -80,3 +80,20 @@ li{
 #navbar-1 ul li a{
 	color:black;
 }
+.gallery
+{
+    display: inline-block;
+    margin-top: 20px;
+}
+a.icon-block {
+    display:inline-block;
+    width:10em;
+    float:left;
+    text-align:center;
+}
+
+a.icon-block i,
+a.icon-block span {
+    display:block;
+    width:100%;
+    clear:both;

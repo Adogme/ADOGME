@@ -1,5 +1,5 @@
 
-{{ content() }}
+<?= $this->getContent() ?>
 
 <br>
 <br>
@@ -7,57 +7,57 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">Registro de Usuario</div>
 		<div class="panel-body">
-			{{ form('registro', 'id': 'registroForm', 'method': 'post') }}
+			<?= $this->tag->form(['registro', 'id' => 'registroForm', 'method' => 'post']) ?>
 				<div class="form-group col-md-6">
-					{{ form.render('nombre', ['class': 'form-control']) }}
+					<?= $form->render('nombre', ['class' => 'form-control']) ?>
 				</div>
 				<div class="form-group col-md-6">
-					{{ form.render('apellido', ['class': 'form-control']) }}
+					<?= $form->render('apellido', ['class' => 'form-control']) ?>
 				</div>
 
 				<div class="form-group col-md-12">
-					{{ form.render('email', ['class': 'form-control']) }}
+					<?= $form->render('email', ['class' => 'form-control']) ?>
 				</div>
 
 				<div class="form-group col-md-12">
-					{{ form.render('password', ['class': 'form-control']) }}
+					<?= $form->render('password', ['class' => 'form-control']) ?>
 				</div>
 
 				<div class="form-group col-md-12">
-					{{ form.render('repeatPassword', ['class': 'form-control']) }}
+					<?= $form->render('repeatPassword', ['class' => 'form-control']) ?>
 				</div>
 
 				<div class="form-group col-md-6">
-					{{ form.render('telefono', ['class': 'form-control']) }}
+					<?= $form->render('telefono', ['class' => 'form-control']) ?>
 				</div>
 				<div class="form-group form-inline col-md-6">
-					{{ form.label('fechaNacimiento') }}
-					{{ form.render('fechaNacimiento', ['class': 'form-control']) }}
+					<?= $form->label('fechaNacimiento') ?>
+					<?= $form->render('fechaNacimiento', ['class' => 'form-control']) ?>
 				</div>
 
 				<div class="form-group col-md-4">
-					{{ form.render('pais', ['class': 'form-control']) }}
+					<?= $form->render('pais', ['class' => 'form-control']) ?>
 				</div>
 				<div class="form-group col-md-4">
-					{{ form.render('ciudad', ['class': 'form-control']) }}
+					<?= $form->render('ciudad', ['class' => 'form-control']) ?>
 				</div>
 				<div class="form-group col-md-4">
-					{{ form.render('distrito', ['class': 'form-control']) }}
+					<?= $form->render('distrito', ['class' => 'form-control']) ?>
 				</div>
 
 				<div class="form-group col-md-12">
-					{{ form.render('direccion', ['class': 'form-control']) }}
+					<?= $form->render('direccion', ['class' => 'form-control']) ?>
 				</div>
 
 				<div class="form-group">
-					{{ form.label('hombre',['class':'radio-inline']) }} {{ form.render('hombre') }}
-					{{ form.label('mujer',['class':'radio-inline']) }} {{ form.render('mujer') }}
+					<?= $form->label('hombre', ['class' => 'radio-inline']) ?> <?= $form->render('hombre') ?>
+					<?= $form->label('mujer', ['class' => 'radio-inline']) ?> <?= $form->render('mujer') ?>
 				</div>
 
 				<div class="form-group">
-					{{ submit_button('Registrarse', 'class': 'btn btn-primary col-md-2 col-md-offset-5') }}
+					<?= $this->tag->submitButton(['Registrarse', 'class' => 'btn btn-primary col-md-2 col-md-offset-5']) ?>
 				</div>
-			{{ end_form() }}
+			<?= $this->tag->endForm() ?>
 		</div>
 	</div>
 </div>

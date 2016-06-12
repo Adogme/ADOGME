@@ -10,6 +10,7 @@
         <?= $this->tag->stylesheetLink('css/jquery-ui.structure.min.css') ?>
         <?= $this->tag->stylesheetLink('css/jquery-ui.theme.min.css') ?>
         <?= $this->tag->stylesheetLink('https://fonts.googleapis.com/css?family=Signika:700', false) ?>
+        <?= $this->tag->stylesheetLink('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css', false) ?>
         <?= $this->tag->stylesheetLink('css/estilos.css') ?>
 
 

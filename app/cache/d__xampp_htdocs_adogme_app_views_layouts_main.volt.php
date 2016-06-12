@@ -11,7 +11,9 @@
                     </button>
 
                     <!--<a href="#" class="navbar-brand" id="cabecera-logo">Adogme</a>-->
-                    <?= $this->tag->linkTo(['index', 'Adogme', 'class' => 'navbar-brand', 'id' => 'cabcera-logo']) ?>
+                    <!--<?= $this->tag->linkTo(['index', 'Adogme', 'class' => 'navbar-brand', 'id' => 'cabcera-logo']) ?>-->
+                    <a href="/adogme/index" id="cabcera-logo" class="navbar-brand icon-block"><i class="fa fa-paw fa-2x"></i>ADOGME</a>
+                    
                 </div>
 
                 <?= $this->elements->getMenu() ?>

@@ -1,12 +1,12 @@
-{{ content() }}
+<?= $this->getContent() ?>
 
 <h1>Mis Mascotas</h1>
-{{ link_to('cuenta/registrarMascota', 'Nueva mascota', 'class': 'btn btn-primary') }}
+<?= $this->tag->linkTo(['cuenta/registrarMascota', 'Nueva mascota', 'class' => 'btn btn-primary']) ?>
 <br>
 <ul>
-	{% for mascota in mascotas %}
-		<li>{{ mascota.nombre }}</li>
-	{% endfor %}
+	<?php foreach ($mascotas as $mascota) { ?>
+		<li><?= $mascota->nombre ?></li>
+	<?php } ?>
 </ul>
 <br>
 <div class='list-group gallery'>
@@ -18,6 +18,6 @@
                         <small class='text-muted'>Image Title</small>
                     </div> <!-- text-right / end -->
                 </a>
-                {{ link_to('cuenta/editarMascota', 'Editar mascota', 'class': 'btn btn-primary btn-sm') }}
+                <?= $this->tag->linkTo(['cuenta/editarMascota', 'Editar mascota', 'class' => 'btn btn-primary btn-sm']) ?>
             </div> <!-- col-6 / end -->
      </div> <!-- row / end-->
