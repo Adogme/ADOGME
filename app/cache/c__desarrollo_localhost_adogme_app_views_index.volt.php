@@ -9,7 +9,10 @@
         <?php echo $this->tag->stylesheetLink('css/bootstrap.min.css'); ?>
         <?php echo $this->tag->stylesheetLink('css/jquery-ui.structure.min.css'); ?>
         <?php echo $this->tag->stylesheetLink('css/jquery-ui.theme.min.css'); ?>
+        <?php echo $this->tag->stylesheetLink('https://fonts.googleapis.com/css?family=Signika:700', false); ?>
+        <?php echo $this->tag->stylesheetLink('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css', false); ?>
         <?php echo $this->tag->stylesheetLink('css/estilos.css'); ?>
+
 
         <?php echo $this->tag->javascriptInclude('js/jquery.min.js'); ?>
         <?php echo $this->tag->javascriptInclude('js/bootstrap.min.js'); ?>

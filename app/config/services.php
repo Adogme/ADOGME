@@ -135,3 +135,21 @@ $di->setShared('session', function () {
 $di->set('elements', function () {
     return new Elementos();
 });
+
+$di->set('mail', function () use ($config) {
+    $mailer = [
+        'driver'     => 'smtp',
+        'host'       => 'smtp.gmail.com',
+        'port'       => 587,//465,
+        'encryption' => 'tls',//'ssl',
+        'username'   => 'kyosaku148@gmail.com',
+        'password'   => '75924232409*kYO',
+        'from'       => [
+                'email' => 'kyosaku148@gmail.com',
+                'name'  => 'kyo'
+            ]
+    ];
+
+    $mail = new \Phalcon\Ext\Mailer\Manager($mailer);
+    return $mail;
+});

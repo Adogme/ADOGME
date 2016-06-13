@@ -17,14 +17,11 @@ class CuentaController extends ControllerBase
 	{
 		$mascotas = Mascotas::find();
 		$this->view->mascotas = $mascotas;
-		/*foreach ($mascotas as $mascota) {
-			echo '<h3>' . $mascota->nombre . '</h3>';
-		}*/
 	}
 
 	public function registrarMascotaAction()
 	{
-		$form = new EdicionMascotaForm(new Mascotas);
+		$form = new RegistroMascotaForm(new Mascotas);
 
 		if ($this->request->isPost()) {
 			if (!$form->isValid($_POST)) {

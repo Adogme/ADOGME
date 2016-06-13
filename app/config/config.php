@@ -22,5 +22,12 @@ return new \Phalcon\Config(array(
         'formsDir'       => APP_PATH . '/app/forms/',
         //'baseUri'        => '/',
         'baseUri'        => '/adogme/',
+    ),
+    'mail' => array(
+        'driver' => 'mail',
+        'from' => array(
+            'email' => 'adogme@gmail.com',
+            'name' => 'adogme'
+        )
     )
 ));

@@ -4,9 +4,107 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c419e72e911b213aef4ac7ad1bd0e384",
-    "content-hash": "b85efd0901189b7b81de8a729bb9ced2",
-    "packages": [],
+    "hash": "10f2d957854a92ca311a2cd155eb3c71",
+    "content-hash": "98e923f7c7f4179f2aae6bd2023172d1",
+    "packages": [
+        {
+            "name": "phalcon-ext/mailer",
+            "version": "v2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phalcon-ext/mailer.git",
+                "reference": "9e8a21a499e11a513fbb929734224ca2976d7605"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phalcon-ext/mailer/zipball/9e8a21a499e11a513fbb929734224ca2976d7605",
+                "reference": "9e8a21a499e11a513fbb929734224ca2976d7605",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "swiftmailer/swiftmailer": "~5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phalcon\\Ext\\Mailer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Stanislav Kiryukhin",
+                    "email": "korsar.zn@gmail.com",
+                    "role": "Founder and project lead"
+                }
+            ],
+            "description": "Mailer component as wrapper over SwiftMailer for Phalcon.",
+            "keywords": [
+                "mailer",
+                "phalcon",
+                "phalcon-ext",
+                "phalcon-mailer"
+            ],
+            "time": "2015-12-18 08:36:58"
+        },
+        {
+            "name": "swiftmailer/swiftmailer",
+            "version": "v5.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swiftmailer/swiftmailer.git",
+                "reference": "d8db871a54619458a805229a057ea2af33c753e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/d8db871a54619458a805229a057ea2af33c753e8",
+                "reference": "d8db871a54619458a805229a057ea2af33c753e8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.1,<0.9.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.4-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/swift_required.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Corbyn"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.org",
+            "keywords": [
+                "email",
+                "mail",
+                "mailer"
+            ],
+            "time": "2016-05-01 08:45:47"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
