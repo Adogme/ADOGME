@@ -20,4 +20,11 @@
                 </a>
                 {{ link_to('cuenta/editarMascota', 'Editar mascota', 'class': 'btn btn-primary btn-sm') }}
             </div> <!-- col-6 / end -->
+            <div class="col-md-6">
+                Raza:<br>
+                Sexo:<br>
+                Peso:<br><br>
+                <button class="btn btn-primary">Dar en adopcion</button><br><br>
+                <button class="btn btn-primary">Ver adoptantes</button>
+            </div>
      </div> <!-- row / end-->
