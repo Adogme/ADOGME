@@ -94,4 +94,8 @@ class Elementos extends Component
         echo '</div>';
         echo '</div>';
     }
+
+    public function getImgCloud($nombre, $opciones = null) {
+        echo cl_image_tag($nombre, $opciones);
+    }
 }

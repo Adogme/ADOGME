@@ -17,6 +17,10 @@
         <?php echo $this->tag->javascriptInclude('js/jquery.min.js'); ?>
         <?php echo $this->tag->javascriptInclude('js/bootstrap.min.js'); ?>
         <?php echo $this->tag->javascriptInclude('js/jquery-ui.min.js'); ?>
+        <?php echo $this->tag->javascriptInclude('js/jquery.ui.widget.js'); ?>
+        <?php echo $this->tag->javascriptInclude('js/jquery.iframe-transport.js'); ?>
+        <?php echo $this->tag->javascriptInclude('js/jquery.fileupload.js'); ?>
+        <?php echo $this->tag->javascriptInclude('js/jquery.cloudinary.js'); ?>
         <meta name="author" content="kyo">
     </head>
     <body>

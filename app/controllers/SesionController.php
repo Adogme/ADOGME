@@ -18,7 +18,7 @@ class SesionController extends ControllerBase
     private function _registrarSesion(Usuarios $usuario)
     {
         $this->session->set('auth', array(
-                'id'   => $usuario->getId(),
+                'email'   => $usuario->email,
                 'nombre' => $usuario->nombre
         ));
     }
@@ -46,7 +46,9 @@ class SesionController extends ControllerBase
                 }
             }
 
-            $this->flash->error('Wrong email/password ' . $this->security->hash($password));
+            $this->tag->setDefault('password', '');
+            $this->flash->error('Email/Contraseña Inválido');
+            return $this->forward('sesion/index');
     	}
     }
 

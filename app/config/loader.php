@@ -16,4 +16,11 @@ $loader->registerDirs(
 )->register();
 
 // Use composer autoloader to load vendor classes
-//require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+//Cloudinary config
+Cloudinary::config(array( 
+  "cloud_name" => "ddc4n6gua",
+  "api_key" => "851435719311464",
+  "api_secret" => "Khn9DB-JWzhI9MEEZWDnnDE9upw"
+));

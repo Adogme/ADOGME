@@ -10,9 +10,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <!--<a href="#" class="navbar-brand" id="cabecera-logo">Adogme</a>-->
-                    {# {{ link_to('index', 'Adogme', 'class':'navbar-brand', 'id': 'cabcera-logo') }} #}
-                    <a href="/adogme/index" id="cabcera-logo" class="navbar-brand icon-block"><i class="fa fa-paw fa-2x"></i>ADOGME</a>
+                    {{ link_to('index', '<i class="fa fa-paw fa-2x"></i>adogme', 'class':'navbar-brand icon-block', 'id': 'cabcera-logo') }}
                 </div>
 
                 {{ elements.getMenu() }}

@@ -17,6 +17,10 @@
         {{ javascript_include('js/jquery.min.js') }}
         {{ javascript_include('js/bootstrap.min.js') }}
         {{ javascript_include('js/jquery-ui.min.js') }}
+        {{ javascript_include('js/jquery.ui.widget.js') }}
+        {{ javascript_include('js/jquery.iframe-transport.js') }}
+        {{ javascript_include('js/jquery.fileupload.js') }}
+        {{ javascript_include('js/jquery.cloudinary.js') }}
         <meta name="author" content="kyo">
     </head>
     <body>

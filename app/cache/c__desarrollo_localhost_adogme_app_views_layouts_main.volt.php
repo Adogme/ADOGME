@@ -10,9 +10,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <!--<a href="#" class="navbar-brand" id="cabecera-logo">Adogme</a>-->
-                    
-                    <a href="/adogme/index" id="cabcera-logo" class="navbar-brand icon-block"><i class="fa fa-paw fa-2x"></i>ADOGME</a>
+                    <?php echo $this->tag->linkTo(array('index', '<i class="fa fa-paw fa-2x"></i>adogme', 'class' => 'navbar-brand icon-block', 'id' => 'cabcera-logo')); ?>
                 </div>
 
                 <?php echo $this->elements->getMenu(); ?>

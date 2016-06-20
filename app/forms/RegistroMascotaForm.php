@@ -7,6 +7,7 @@ use Phalcon\Forms\Element\Password;
 use Phalcon\Forms\Element\Radio;
 use Phalcon\Forms\Element\Check;
 use Phalcon\Forms\Element\Date;
+use Phalcon\Forms\Element\File;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\Confirmation;
@@ -65,12 +66,21 @@ class RegistroMascotaForm extends Form
 		$vacuna->setLabel('Vacuna');
 		$this->add($vacuna);
 
+		//Sexo
+		$macho = new Radio('macho', array('name' => 'sexo', 'value' => 'Macho'));
+		$macho->setLabel('M');
+		$hembra = new Radio('hembra', array('name' => 'sexo', 'value' => 'Hembra'));
+		$hembra->setLabel('H');
+		$this->add($macho);
+		$this->add($hembra);
+
 		//Enfermedades
 
 
 	}
 }
 
+/*
 class EdicionMascotaForm extends Form
 {
 	public function initialize($entity = null, $options = null)
@@ -129,4 +139,4 @@ class EdicionMascotaForm extends Form
 
 
 	}
-}
+}*/
