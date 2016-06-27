@@ -17,13 +17,15 @@ class CuentaController extends ControllerBase
 	public function listarMascotasAction()
 	{
 		$auth = $this->session->get('auth');
-		$usuario = Usuarios::findFirst(
+		$arrMascotas = Usuarios::findFirst(
 					array(
 	            		"conditions" => array('email' => $auth['email']),
-	            		"field" => array('mascotas' => true)
+	            		"fields" => array('mascotas' => true)
             		)
 				);
-
+		
+		$usuario = new Usuarios();
+		$usuario->mascotas = $arrMascotas->mascotas;
 		$mascotas = $usuario->listMascotas();
 		$this->view->mascotas = $mascotas;
 	}
@@ -73,9 +75,20 @@ class CuentaController extends ControllerBase
 		
 	}
 
-	public function editarMascotaAction()
+	public function editarMascotaAction($nombreMascota)
 	{
-		$form = new RegistroMascotaForm(new Mascotas);
+		$auth = $this->session->get('auth');
+		$arrMascotas = Usuarios::findFirst(
+					array(
+	            		"conditions" => array('email' => $auth['email']),
+	            		"fields" => array('mascotas' => true)
+            		)
+				);
+		$usuario = new Usuarios();
+		$usuario->mascotas = $arrMascotas->mascotas;
+		$mascotas = $usuario->listMascotas();
+		$mascota=$mascotas[0];
+		$form = new RegistroMascotaForm($mascota);
 
 		if ($this->request->isPost()) {
 			if (!$form->isValid($_POST)) {

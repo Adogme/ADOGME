@@ -1,3 +1,5 @@
+
+
 <?php echo $this->getContent(); ?>
 	<div class="row">
 		<div class="col-md-12">
@@ -61,14 +63,38 @@
 					</div>
 					<div class="panel-body">
 						<?php foreach ($mascotas as $mascota) { ?>
+							<!-- Pop Up -->
+							<div class="modal fade" id=<?php echo 'modal' . $mascota->urlFoto; ?> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel"><?php echo $mascota->nombre; ?></h4>
+							      </div>
+							      <div class="modal-body">
+							        <?php echo $this->elements->getImgCloud($mascota->urlFoto, array('class' => 'img-responsive', 'width' => '568', 'height' => '300', 'crop' => 'pad')); ?>
+							        <br>
+									<b>Descripcion: </b> <p><?php echo $mascota->descripcion; ?></p>
+									<b>Raza: </b> <?php echo $mascota->raza; ?> <br>
+									<b>Sexo: </b> <?php echo $mascota->sexo; ?> <br>
+									<b>Edad: </b> <?php echo $mascota->edad; ?> Años
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							        <button type="button" class="btn btn-primary">Adoptar!</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+
 						    <div class='list-group gallery'>
 				                <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
-				                	<?php echo $this->elements->getImgCloud($mascota->urlFoto, array('class' => 'img-responsive', 'width' => '200', 'height' => '200')); ?>
-				                    <div class='text-right'>
+				                	<?php echo $this->elements->getImgCloud($mascota->urlFoto, array('class' => 'img-responsive', 'width' => '200', 'height' => '200', 'crop' => 'fill')); ?>
+				                    <div class='text-center'>
 				                        <small class='text-muted'><?php echo $mascota->nombre; ?></small>
 				                    </div> <!-- text-right / end -->
 				                </a>
-				                <?php echo $this->tag->linkTo(array('#', 'Ver mascota', 'class' => 'btn btn-info')); ?>
+				                <?php echo $this->tag->linkTo(array('#', 'Ver mascota', 'class' => 'btn btn-info', 'data-toggle' => 'modal', 'data-target' => '#modal' . $mascota->urlFoto)); ?>
 				            </div>
 			            <?php } ?>
 			        </div>  

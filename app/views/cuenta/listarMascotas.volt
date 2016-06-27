@@ -10,12 +10,12 @@
         <div class='col-md-3 col-md-offset-1'>
                 <div class='list-group gallery'>
                     <a class="thumbnail fancybox" rel="ligthbox" href="#">
-                        {{ elements.getImgCloud(mascota.urlFoto, ['class': 'img-responsive']) }}
+                        {{ elements.getImgCloud(mascota.urlFoto, ['class': 'img-responsive', 'crop': 'fill']) }}
                         <div class='text-right'>
                             <small class='text-muted'>{{ mascota.nombre }}</small>
                         </div> <!-- text-right / end -->
                     </a>
-                    {{ link_to('cuenta/editarMascota', 'Editar mascota', 'class': 'btn btn-primary') }}
+                    {{ link_to('cuenta/editarMascota/' ~ mascota.nombre, '<i class="glyphicon glyphicon-edit"></i> Editar mascota', 'class': 'btn btn-primary') }}
                 </div> 
         </div>
         <div class="col-md-5">
@@ -38,7 +38,7 @@
                     </tr>
                     <tr>
                         <td>Peso</td>
-                        <td>{{ mascota.peso }}</td>
+                        <td>{{ mascota.peso }} Kg</td>
                     </tr>
                 </tbody>
             </table><br>

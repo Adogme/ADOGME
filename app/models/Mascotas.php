@@ -19,4 +19,17 @@ class Mascotas extends Collection
 	{
 		return "mascotas";
 	}
+
+	public function loadByArray(array $arreglo) {
+		$nombre = $arreglo['nombre'];
+		$raza = $arreglo['raza'];
+		$sexo = $arreglo['sexo'];
+		$peso = $arreglo['peso'];
+		$altura = $arreglo['altura'];
+		$edad = $arreglo['edad'];
+		$descripcion = $arreglo['descripcion'];
+		$pelo = $arreglo['pelo'];
+		$vacuna = $arreglo['vacuna'];
+		$urlFoto = $arreglo['urlFoto'];
+	}
 }

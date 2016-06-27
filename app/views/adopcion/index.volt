@@ -61,14 +61,39 @@
 					</div>
 					<div class="panel-body">
 						{% for mascota in mascotas %}
+							<!-- Pop Up -->
+							<div class="modal fade" id={{ 'modal'~mascota.urlFoto }} tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel">{{ mascota.nombre }}</h4>
+							      </div>
+							      <div class="modal-body">
+							        {{ elements.getImgCloud(mascota.urlFoto, ['class': 'img-responsive', 'width': '568', 'height': '300', 'crop': 'pad']) }}
+							        <br>
+									<b>Descripcion: </b> <p>{{ mascota.descripcion }}</p>
+									<b>Raza: </b> {{ mascota.raza }} <br>
+									<b>Sexo: </b> {{ mascota.sexo }} <br>
+									<b>Edad: </b> {{ mascota.edad }} Años
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							        <button type="button" class="btn btn-primary">Adoptar!</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+							<!-- Fin Pop Up -->
+
 						    <div class='list-group gallery'>
 				                <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
-				                	{{ elements.getImgCloud(mascota.urlFoto, ['class': 'img-responsive', 'width': '200', 'height': '200']) }}
-				                    <div class='text-right'>
+				                	{{ elements.getImgCloud(mascota.urlFoto, ['class': 'img-responsive', 'width': '200', 'height': '200', 'crop': 'fill']) }}
+				                    <div class='text-center'>
 				                        <small class='text-muted'>{{ mascota.nombre }}</small>
 				                    </div> <!-- text-right / end -->
 				                </a>
-				                {{ link_to('#', 'Ver mascota', 'class': 'btn btn-info') }}
+				                {{ link_to('#', 'Ver mascota', 'class': 'btn btn-info', 'data-toggle': 'modal', 'data-target': '#modal'~mascota.urlFoto) }}
 				            </div>
 			            {% endfor %}
 			        </div>  

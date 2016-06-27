@@ -10,12 +10,12 @@
         <div class='col-md-3 col-md-offset-1'>
                 <div class='list-group gallery'>
                     <a class="thumbnail fancybox" rel="ligthbox" href="#">
-                        <?php echo $this->elements->getImgCloud($mascota->urlFoto, array('class' => 'img-responsive')); ?>
+                        <?php echo $this->elements->getImgCloud($mascota->urlFoto, array('class' => 'img-responsive', 'crop' => 'fill')); ?>
                         <div class='text-right'>
                             <small class='text-muted'><?php echo $mascota->nombre; ?></small>
                         </div> <!-- text-right / end -->
                     </a>
-                    <?php echo $this->tag->linkTo(array('cuenta/editarMascota', 'Editar mascota', 'class' => 'btn btn-primary')); ?>
+                    <?php echo $this->tag->linkTo(array('cuenta/editarMascota/' . $mascota->nombre, '<i class="glyphicon glyphicon-edit"></i> Editar mascota', 'class' => 'btn btn-primary')); ?>
                 </div> 
         </div>
         <div class="col-md-5">
@@ -38,7 +38,7 @@
                     </tr>
                     <tr>
                         <td>Peso</td>
-                        <td><?php echo $mascota->peso; ?></td>
+                        <td><?php echo $mascota->peso; ?> Kg</td>
                     </tr>
                 </tbody>
             </table><br>
