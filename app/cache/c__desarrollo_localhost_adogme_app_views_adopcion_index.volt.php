@@ -32,17 +32,17 @@
 		                        <label>Tamaño</label>
 		                    </div>
 		                    <div class="form-group">
-		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro" value="S">S</label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro"  value="M">M</label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro"  value="L">L</label>
+		                        <label class="checkbox-inline" alt="´rueba"><input type="checkbox" name="tamañoPerro" value="S"><img alt="pequeño" src="/adogme/public/img/dog-TS.png" height="25px" style="margin-top:-10px;"/></label>
+		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro"  value="M"><img alt="pequeño" src="/adogme/public/img/dog-TM.png" height="29px" style="margin-top:-10px;"/></label>
+		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro"  value="L"><img alt="pequeño" src="/adogme/public/img/dog-TL.png" height="33px" style="margin-top:-10px;"/></label>
 		                    </div>
 		                    <div class="form-group">
 		                        <label>Pelo</label>
 		                    </div>
 		                    <div class="form-group">
-		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro" value="S">S</label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro"  value="M">M</label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro"  value="L">L</label>
+		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro" value="S"><img alt="pequeño" src="/adogme/public/img/dog-PS.png" height="32px" style="margin-top:-10px;"/></label>
+		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro"  value="M"><img alt="pequeño" src="/adogme/public/img/dog-PM.png" height="32px" style="margin-top:-10px;"/></label>
+		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro"  value="L"><img alt="pequeño" src="/adogme/public/img/dog-PL.png" height="32px" style="margin-top:-10px;"/></label>
 		                    </div>
 		                    <div class="form-group">
 		                        <label>Sexo</label>
@@ -146,7 +146,7 @@
 	    	<?php if ($this->session->get('auth') == null) { ?>
 	    		window.location = "<?php echo $this->url->get('sesion/index') ?>";
 	    	<?php } ?>
-	    	
+
 	    	e.preventDefault();
 	    	var id = $(this).attr("id");
 	    	var arr = id.split('-');
