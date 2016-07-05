@@ -26,7 +26,8 @@ class CuentaController extends ControllerBase
 		
 		$usuario = new Usuarios();
 		$usuario->mascotas = $arrMascotas->mascotas;
-		$mascotas = $usuario->listMascotas();
+		$usuario->convertToObjectMascotas();
+		$mascotas = $usuario->mascotas;
 		$this->view->mascotas = $mascotas;
 	}
 
@@ -114,7 +115,16 @@ class CuentaController extends ControllerBase
 
 	public function listarAdopcionesAction()
 	{
+		$auth = $this->session->get('auth');
+		$usuario = Usuarios::findFirst(
+					array(
+	            		"conditions" => array('email' => $auth['email'])
+            		)
+				);
 
+		$adopciones = $usuario->getColaAdopciones();
+		
+		$this->view->mascotas = $adopciones;
 	}
 
 	public function listarFavoritosAction()

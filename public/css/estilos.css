@@ -96,3 +96,14 @@ a.icon-block span {
     display:block;
     width:100%;
     clear:both;
+}
+
+.btn-desadoptar {
+	background-color:#ff0000;
+	border-color:#800000;
+}
+
+.btn-desadoptar:hover {
+	background-color:#800000;
+	border-color:#660000;
+}

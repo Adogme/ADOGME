@@ -1,11 +1,25 @@
 {{ content() }}
+{%- macro isadopted(mascota) %}
+	{% if session.get('auth') != null %}
+		{% set email = session.get('auth')['email'] %}
+		{% for encolado in mascota.colaAdoptantes %}
+			{% if encolado == email %}
+				{% return true %}
+			{% endif %}
+		{% endfor %}
+		{% return false %}
+	{% else %}
+		{% return false %}
+	{% endif %}
+{%- endmacro %}
+
 	<div class="row">
 		<div class="col-md-12">
 			<h1>Adopcion</h1>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-lg-3 col-lg-pull-3">
+		<div class="col-lg-3">
 			<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">Filtros</h3>
@@ -54,10 +68,10 @@
 					</div>
 			</div>
 		</div>
-		<div class="col-lg-9 col-lg-pull-3">
+		<div class="col-lg-9">
 			<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Resultados</h3>
+						<h3 class="panel-title">Mascotas</h3>
 					</div>
 					<div class="panel-body">
 						{% for mascota in mascotas %}
@@ -67,19 +81,22 @@
 							    <div class="modal-content">
 							      <div class="modal-header">
 							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							        <h4 class="modal-title" id="myModalLabel">{{ mascota.nombre }}</h4>
+							        <h4 class="modal-title" id={{ "myModalLabel-"~mascota.urlFoto }}>{{ mascota.nombre }}</h4>
 							      </div>
 							      <div class="modal-body">
 							        {{ elements.getImgCloud(mascota.urlFoto, ['class': 'img-responsive', 'width': '568', 'height': '300', 'crop': 'pad']) }}
 							        <br>
-									<b>Descripcion: </b> <p>{{ mascota.descripcion }}</p>
+									<b>Descripcion: </b> <p>{{ mascota.descripcion }}</p>	
 									<b>Raza: </b> {{ mascota.raza }} <br>
 									<b>Sexo: </b> {{ mascota.sexo }} <br>
 									<b>Edad: </b> {{ mascota.edad }} Años
 							      </div>
 							      <div class="modal-footer">
-							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							        <button type="button" class="btn btn-primary">Adoptar!</button>
+							      	{% if !isadopted(mascota) %}
+							        	<button type="button" id={{ 'btnAdoptar-'~mascota.urlFoto }} class="btn btn-primary btn-adoptar">Adoptar!</button>
+						        	{% else %}
+										<button type="button" id={{ 'btnAdoptar-'~mascota.urlFoto }} class="btn btn-primary btn-desadoptar">Desadoptar</button>
+						        	{% endif %}
 							      </div>
 							    </div>
 							  </div>
@@ -87,13 +104,13 @@
 							<!-- Fin Pop Up -->
 
 						    <div class='list-group gallery'>
-				                <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+				                <a class="thumbnail fancybox" rel="ligthbox" href="#" data-toggle="modal" data-target={{ '#modal'~mascota.urlFoto }}>
 				                	{{ elements.getImgCloud(mascota.urlFoto, ['class': 'img-responsive', 'width': '200', 'height': '200', 'crop': 'fill']) }}
 				                    <div class='text-center'>
-				                        <small class='text-muted'>{{ mascota.nombre }}</small>
+			                        	<small class='text-muted'>{{ mascota.nombre }}</small>
 				                    </div> <!-- text-right / end -->
 				                </a>
-				                {{ link_to('#', 'Ver mascota', 'class': 'btn btn-info', 'data-toggle': 'modal', 'data-target': '#modal'~mascota.urlFoto) }}
+				                {#{{ link_to('#', 'Ver mascota', 'class': 'btn btn-info', 'data-toggle': 'modal', 'data-target': '#modal'~mascota.urlFoto) }}#}
 				            </div>
 			            {% endfor %}
 			        </div>  
@@ -101,3 +118,53 @@
 	</div>
 	
 </div>
+<script>
+	$(document).ready(function(){
+
+	    $(".btn-adoptar").click(function(e){
+	    	{% if session.get('auth') == null %}
+	    		window.location = "<?php echo $this->url->get('sesion/index') ?>";
+	    	{% endif %}
+
+	    	e.preventDefault();
+	    	var id = $(this).attr("id");
+	    	var arr = id.split('-');
+	    	var idTitulo = "#myModalLabel-"+arr[1];
+	    	var nombre = $(idTitulo).html();
+	    	var btnAdoptar = $(this);
+	    	
+	    	$.post("<?php echo $this->url->get('adopcion/adoptar') ?>", {nombreM:nombre}, function(data)
+			 {
+			 	var resultado = JSON.parse(data);
+			 	if (resultado.res) {
+			 		btnAdoptar.html('Desadoptar');
+			 		btnAdoptar.removeClass('btn-adoptar');
+		 			btnAdoptar.addClass('btn-desadoptar');
+			 	}
+		     })
+	    });
+
+	    $(".btn-desadoptar").click(function(e){
+	    	{% if session.get('auth') == null %}
+	    		window.location = "<?php echo $this->url->get('sesion/index') ?>";
+	    	{% endif %}
+	    	
+	    	e.preventDefault();
+	    	var id = $(this).attr("id");
+	    	var arr = id.split('-');
+	    	var idTitulo = "#myModalLabel-"+arr[1];
+	    	var nombre = $(idTitulo).html();
+	    	var btnAdoptar = $(this);
+	    	
+	    	$.post("<?php echo $this->url->get('adopcion/desadoptar') ?>", {nombreM:nombre}, function(data)
+			 {
+			 	var resultado = JSON.parse(data);
+			 	if (resultado.res) {
+			 		btnAdoptar.html('Adoptar!');
+			 		btnAdoptar.removeClass('btn-desadoptar');
+		 			btnAdoptar.addClass('btn-adoptar');
+			 	}
+		     })
+	    });
+	});
+</script>

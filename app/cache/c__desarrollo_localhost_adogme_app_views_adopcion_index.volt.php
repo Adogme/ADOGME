@@ -1,13 +1,23 @@
+<?php echo $this->getContent(); ?><?php $this->_macros['isadopted'] = function($__p = null) { if (isset($__p[0])) { $mascota = $__p[0]; } else { if (isset($__p["mascota"])) { $mascota = $__p["mascota"]; } else {  throw new \Phalcon\Mvc\View\Exception("Macro 'isadopted' was called without parameter: mascota");  } }  ?>
+	<?php if ($this->session->get('auth') != null) { ?>
+		<?php $email = $this->session->get('auth')['email']; ?>
+		<?php foreach ($mascota->colaAdoptantes as $encolado) { ?>
+			<?php if ($encolado == $email) { ?>
+				<?php return true; ?>
+			<?php } ?>
+		<?php } ?>
+		<?php return false; ?>
+	<?php } else { ?>
+		<?php return false; ?>
+	<?php } ?><?php }; $this->_macros['isadopted'] = \Closure::bind($this->_macros['isadopted'], $this); ?>
 
-
-<?php echo $this->getContent(); ?>
 	<div class="row">
 		<div class="col-md-12">
 			<h1>Adopcion</h1>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-lg-3 col-lg-pull-3">
+		<div class="col-lg-3">
 			<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">Filtros</h3>
@@ -56,10 +66,10 @@
 					</div>
 			</div>
 		</div>
-		<div class="col-lg-9 col-lg-pull-3">
+		<div class="col-lg-9">
 			<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Resultados</h3>
+						<h3 class="panel-title">Mascotas</h3>
 					</div>
 					<div class="panel-body">
 						<?php foreach ($mascotas as $mascota) { ?>
@@ -69,32 +79,36 @@
 							    <div class="modal-content">
 							      <div class="modal-header">
 							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							        <h4 class="modal-title" id="myModalLabel"><?php echo $mascota->nombre; ?></h4>
+							        <h4 class="modal-title" id=<?php echo 'myModalLabel-' . $mascota->urlFoto; ?>><?php echo $mascota->nombre; ?></h4>
 							      </div>
 							      <div class="modal-body">
 							        <?php echo $this->elements->getImgCloud($mascota->urlFoto, array('class' => 'img-responsive', 'width' => '568', 'height' => '300', 'crop' => 'pad')); ?>
 							        <br>
-									<b>Descripcion: </b> <p><?php echo $mascota->descripcion; ?></p>
+									<b>Descripcion: </b> <p><?php echo $mascota->descripcion; ?></p>	
 									<b>Raza: </b> <?php echo $mascota->raza; ?> <br>
 									<b>Sexo: </b> <?php echo $mascota->sexo; ?> <br>
 									<b>Edad: </b> <?php echo $mascota->edad; ?> Años
 							      </div>
 							      <div class="modal-footer">
-							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							        <button type="button" class="btn btn-primary">Adoptar!</button>
+							      	<?php if (!$this->callMacro('isadopted', array($mascota))) { ?>
+							        	<button type="button" id=<?php echo 'btnAdoptar-' . $mascota->urlFoto; ?> class="btn btn-primary btn-adoptar">Adoptar!</button>
+						        	<?php } else { ?>
+										<button type="button" id=<?php echo 'btnAdoptar-' . $mascota->urlFoto; ?> class="btn btn-primary btn-desadoptar">Desadoptar</button>
+						        	<?php } ?>
 							      </div>
 							    </div>
 							  </div>
 							</div>
+							<!-- Fin Pop Up -->
 
 						    <div class='list-group gallery'>
-				                <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+				                <a class="thumbnail fancybox" rel="ligthbox" href="#" data-toggle="modal" data-target=<?php echo '#modal' . $mascota->urlFoto; ?>>
 				                	<?php echo $this->elements->getImgCloud($mascota->urlFoto, array('class' => 'img-responsive', 'width' => '200', 'height' => '200', 'crop' => 'fill')); ?>
 				                    <div class='text-center'>
-				                        <small class='text-muted'><?php echo $mascota->nombre; ?></small>
+			                        	<small class='text-muted'><?php echo $mascota->nombre; ?></small>
 				                    </div> <!-- text-right / end -->
 				                </a>
-				                <?php echo $this->tag->linkTo(array('#', 'Ver mascota', 'class' => 'btn btn-info', 'data-toggle' => 'modal', 'data-target' => '#modal' . $mascota->urlFoto)); ?>
+				                
 				            </div>
 			            <?php } ?>
 			        </div>  
@@ -102,3 +116,53 @@
 	</div>
 	
 </div>
+<script>
+	$(document).ready(function(){
+
+	    $(".btn-adoptar").click(function(e){
+	    	<?php if ($this->session->get('auth') == null) { ?>
+	    		window.location = "<?php echo $this->url->get('sesion/index') ?>";
+	    	<?php } ?>
+
+	    	e.preventDefault();
+	    	var id = $(this).attr("id");
+	    	var arr = id.split('-');
+	    	var idTitulo = "#myModalLabel-"+arr[1];
+	    	var nombre = $(idTitulo).html();
+	    	var btnAdoptar = $(this);
+	    	
+	    	$.post("<?php echo $this->url->get('adopcion/adoptar') ?>", {nombreM:nombre}, function(data)
+			 {
+			 	var resultado = JSON.parse(data);
+			 	if (resultado.res) {
+			 		btnAdoptar.html('Desadoptar');
+			 		btnAdoptar.removeClass('btn-adoptar');
+		 			btnAdoptar.addClass('btn-desadoptar');
+			 	}
+		     })
+	    });
+
+	    $(".btn-desadoptar").click(function(e){
+	    	<?php if ($this->session->get('auth') == null) { ?>
+	    		window.location = "<?php echo $this->url->get('sesion/index') ?>";
+	    	<?php } ?>
+	    	
+	    	e.preventDefault();
+	    	var id = $(this).attr("id");
+	    	var arr = id.split('-');
+	    	var idTitulo = "#myModalLabel-"+arr[1];
+	    	var nombre = $(idTitulo).html();
+	    	var btnAdoptar = $(this);
+	    	
+	    	$.post("<?php echo $this->url->get('adopcion/desadoptar') ?>", {nombreM:nombre}, function(data)
+			 {
+			 	var resultado = JSON.parse(data);
+			 	if (resultado.res) {
+			 		btnAdoptar.html('Adoptar!');
+			 		btnAdoptar.removeClass('btn-desadoptar');
+		 			btnAdoptar.addClass('btn-adoptar');
+			 	}
+		     })
+	    });
+	});
+</script>

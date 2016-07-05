@@ -14,6 +14,7 @@ class Mascotas extends Collection
 	public $pelo;
 	public $vacuna;
 	public $urlFoto;
+	public $colaAdoptantes = array();
 
 	public function getSource()
 	{
@@ -21,15 +22,16 @@ class Mascotas extends Collection
 	}
 
 	public function loadByArray(array $arreglo) {
-		$nombre = $arreglo['nombre'];
-		$raza = $arreglo['raza'];
-		$sexo = $arreglo['sexo'];
-		$peso = $arreglo['peso'];
-		$altura = $arreglo['altura'];
-		$edad = $arreglo['edad'];
-		$descripcion = $arreglo['descripcion'];
-		$pelo = $arreglo['pelo'];
-		$vacuna = $arreglo['vacuna'];
-		$urlFoto = $arreglo['urlFoto'];
+		$this->nombre = $arreglo['nombre'];
+		$this->raza = $arreglo['raza'];
+		$this->sexo = $arreglo['sexo'];
+		$this->peso = $arreglo['peso'];
+		$this->altura = $arreglo['altura'];
+		$this->edad = $arreglo['edad'];
+		$this->descripcion = $arreglo['descripcion'];
+		$this->pelo = $arreglo['pelo'];
+		$this->vacuna = $arreglo['vacuna'];
+		$this->urlFoto = $arreglo['urlFoto'];
+		$this->colaAdoptantes = $arreglo['colaAdoptantes'];
 	}
 }
