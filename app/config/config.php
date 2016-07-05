@@ -20,8 +20,8 @@ return new \Phalcon\Config(array(
         'libraryDir'     => APP_PATH . '/app/library/',
         'cacheDir'       => APP_PATH . '/app/cache/',
         'formsDir'       => APP_PATH . '/app/forms/',
-        'baseUri'        => '/',
-        //'baseUri'        => '/adogme/',
+        //'baseUri'        => '/',
+        'baseUri'        => '/adogme/',
     ),
     'mail' => array(
         'driver' => 'mail',
