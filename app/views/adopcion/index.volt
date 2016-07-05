@@ -34,17 +34,17 @@
 		                        <label>Tamaño</label>
 		                    </div>
 		                    <div class="form-group">
-		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro" value="S"><img alt="pequeño" src="/adogme/public/img/dog-TS.png" height="25px" style="margin-top:-10px;"/></label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro"  value="M"><img alt="pequeño" src="/adogme/public/img/dog-TM.png" height="29px" style="margin-top:-10px;"/></label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro"  value="L"><img alt="pequeño" src="/adogme/public/img/dog-TL.png" height="33px" style="margin-top:-10px;"/></label>
+		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro" value="S">{{ image("img/dog-TS.png", 'height': '25px', 'style': 'margin-top:-10px') }}</label>
+		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro"  value="M">{{ image("img/dog-TM.png", 'height': '29px', 'style': 'margin-top:-10px') }}</label>
+		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro"  value="L">{{ image("img/dog-TL.png", 'height': '33px', 'style': 'margin-top:-10px') }}</label>
 		                    </div>
 		                    <div class="form-group">
 		                        <label>Pelo</label>
 		                    </div>
 		                    <div class="form-group">
-		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro" value="S"><img alt="pequeño" src="/adogme/public/img/dog-PS.png" height="32px" style="margin-top:-10px;"/></label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro"  value="M"><img alt="pequeño" src="/adogme/public/img/dog-PM.png" height="32px" style="margin-top:-10px;"/></label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro"  value="L"><img alt="pequeño" src="/adogme/public/img/dog-PL.png" height="32px" style="margin-top:-10px;"/></label>
+		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro" value="S">{{ image("img/dog-PS.png", 'height': '32px', 'style': 'margin-top:-10px') }}</label>
+		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro"  value="M">{{ image("img/dog-PM.png", 'height': '32px', 'style': 'margin-top:-10px') }}</label>
+		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro"  value="L">{{ image("img/dog-PL.png", 'height': '32px', 'style': 'margin-top:-10px') }}</label>
 		                    </div>
 		                    <div class="form-group">
 		                        <label>Sexo</label>
