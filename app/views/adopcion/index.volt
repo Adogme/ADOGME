@@ -93,9 +93,9 @@
 							      </div>
 							      <div class="modal-footer">
 							      	{% if !isadopted(mascota) %}
-							        	<button type="button" id={{ 'btnAdoptar-'~mascota.urlFoto }} class="btn btn-primary btn-adoptar">Adoptar!</button>
+							        	<button type="button" id={{ 'btnAdoptar-'~mascota.urlFoto }} class="btn btn-primary btn-adopcion btn-adoptar">Adoptar!</button>
 						        	{% else %}
-										<button type="button" id={{ 'btnAdoptar-'~mascota.urlFoto }} class="btn btn-primary btn-desadoptar">Desadoptar</button>
+										<button type="button" id={{ 'btnAdoptar-'~mascota.urlFoto }} class="btn btn-primary btn-adopcion btn-desadoptar">Desadoptar</button>
 						        	{% endif %}
 							      </div>
 							    </div>
@@ -121,50 +121,39 @@
 <script>
 	$(document).ready(function(){
 
-	    $(".btn-adoptar").click(function(e){
+	    $(".btn-adopcion").click(function(e){
 	    	{% if session.get('auth') == null %}
 	    		window.location = "<?php echo $this->url->get('sesion/index') ?>";
 	    	{% endif %}
 
 	    	e.preventDefault();
+	    	var btnAdoptar = $(this);
 	    	var id = $(this).attr("id");
 	    	var arr = id.split('-');
 	    	var idTitulo = "#myModalLabel-"+arr[1];
 	    	var nombre = $(idTitulo).html();
-	    	var btnAdoptar = $(this);
-	    	
-	    	$.post("<?php echo $this->url->get('adopcion/adoptar') ?>", {nombreM:nombre}, function(data)
-			 {
-			 	var resultado = JSON.parse(data);
-			 	if (resultado.res) {
-			 		btnAdoptar.html('Desadoptar');
-			 		btnAdoptar.removeClass('btn-adoptar');
-		 			btnAdoptar.addClass('btn-desadoptar');
-			 	}
-		     })
-	    });
 
-	    $(".btn-desadoptar").click(function(e){
-	    	{% if session.get('auth') == null %}
-	    		window.location = "<?php echo $this->url->get('sesion/index') ?>";
-	    	{% endif %}
-
-	    	e.preventDefault();
-	    	var id = $(this).attr("id");
-	    	var arr = id.split('-');
-	    	var idTitulo = "#myModalLabel-"+arr[1];
-	    	var nombre = $(idTitulo).html();
-	    	var btnAdoptar = $(this);
-	    	
-	    	$.post("<?php echo $this->url->get('adopcion/desadoptar') ?>", {nombreM:nombre}, function(data)
-			 {
-			 	var resultado = JSON.parse(data);
-			 	if (resultado.res) {
-			 		btnAdoptar.html('Adoptar!');
-			 		btnAdoptar.removeClass('btn-desadoptar');
-		 			btnAdoptar.addClass('btn-adoptar');
-			 	}
-		     })
+	    	if (btnAdoptar.html()=='Adoptar!') {
+	    		$.post("<?php echo $this->url->get('adopcion/adoptar') ?>", {nombreM:nombre}, function(data)
+				{
+				 	var resultado = JSON.parse(data);
+				 	if (resultado.res) {
+				 		btnAdoptar.html('Desadoptar');
+				 		btnAdoptar.removeClass('btn-adoptar');
+			 			btnAdoptar.addClass('btn-desadoptar');
+				 	}
+			    })
+	    	} else {
+	    		$.post("<?php echo $this->url->get('adopcion/desadoptar') ?>", {nombreM:nombre}, function(data)
+				{
+				 	var resultado = JSON.parse(data);
+				 	if (resultado.res) {
+				 		btnAdoptar.html('Adoptar!');
+				 		btnAdoptar.removeClass('btn-desadoptar');
+			 			btnAdoptar.addClass('btn-adoptar');
+				 	}
+			    })
+	    	}
 	    });
 	});
 </script>
