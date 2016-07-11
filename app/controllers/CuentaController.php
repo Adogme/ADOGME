@@ -59,7 +59,7 @@ class CuentaController extends ControllerBase
 				$usuario->mascotas[] = $mascota->toArray();
 
 				if ($usuario->save()) {
-					$page_access_token = 'EAAC2BtMOSR8BAKIpT2u2tlvGslBGoGwLKfZB87hRo5JANeNNLVE2lRxmZAHaMGcmFehNRzeoJtpzyRUqD7Rb6ZAxzUOFr4zb5JRE9Eu7lNYEqUTWQyX1oaxVKdDiAqOEOeoZB1IrZBjipeRLmZAd7IhZAtZAjqwQw0n2TAak4bjVJwZDZD';
+					$page_access_token = 'EAAC2BtMOSR8BAAWYEGDzaZAXZA7erZCDijJITaA4Hj6ZBrFqBMFI5uakKMkZAZCZCwdLhnGOetkWvXKuPsZCfi1Uahk2i1zI5cvMlNaa2TqCy8fAS59l9x74011KaZBkHstZAu9Yo0s1iBJ5Hlg4zvwEPvK5vEvJh8MF0ZD';
 					$page_id = '598624690319645';
 
 					try {
