@@ -4,6 +4,7 @@ use Phalcon\Mvc\Collection;
 
 class Usuarios extends Collection
 {
+    public $albergue;
 	public $nombre;
     public $apellido;
 	public $email;
@@ -26,6 +27,7 @@ class Usuarios extends Collection
 	public function columnMap()
     {
         return array(
+            'albergue' => 'albergue',
             'nombre' => 'nombre',
             'apellido' => 'apellido',
             'email' => 'email',

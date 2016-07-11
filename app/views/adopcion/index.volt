@@ -34,24 +34,24 @@
 		                        <label>Tamaño</label>
 		                    </div>
 		                    <div class="form-group">
-		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro" value="S">{{ image("img/dog-TS.png", 'height': '25px', 'style': 'margin-top:-10px') }}</label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro"  value="M">{{ image("img/dog-TM.png", 'height': '29px', 'style': 'margin-top:-10px') }}</label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro"  value="L">{{ image("img/dog-TL.png", 'height': '33px', 'style': 'margin-top:-10px') }}</label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="tamañoPerro" value="S">{{ image("img/dog-TS.png", 'height': '25px', 'style': 'margin-top:-10px') }}</label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="tamañoPerro"  value="M">{{ image("img/dog-TM.png", 'height': '29px', 'style': 'margin-top:-10px') }}</label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="tamañoPerro"  value="L">{{ image("img/dog-TL.png", 'height': '33px', 'style': 'margin-top:-10px') }}</label>
 		                    </div>
 		                    <div class="form-group">
 		                        <label>Pelo</label>
 		                    </div>
 		                    <div class="form-group">
-		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro" value="S">{{ image("img/dog-PS.png", 'height': '32px', 'style': 'margin-top:-10px') }}</label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro"  value="M">{{ image("img/dog-PM.png", 'height': '32px', 'style': 'margin-top:-10px') }}</label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro"  value="L">{{ image("img/dog-PL.png", 'height': '32px', 'style': 'margin-top:-10px') }}</label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="peloPerro" value="S">{{ image("img/dog-PS.png", 'height': '32px', 'style': 'margin-top:-10px') }}</label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="peloPerro"  value="M">{{ image("img/dog-PM.png", 'height': '32px', 'style': 'margin-top:-10px') }}</label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="peloPerro"  value="L">{{ image("img/dog-PL.png", 'height': '32px', 'style': 'margin-top:-10px') }}</label>
 		                    </div>
 		                    <div class="form-group">
 		                        <label>Sexo</label>
 		                    </div>
 		                    <div class="form-group">
-		                        <label class="checkbox-inline"><input type="checkbox" name="sexoPerro"  value="H">Hembra</label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="sexoPerro"  value="M">Macho</label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="sexoPerro"  value="H">Hembra</label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="sexoPerro"  value="M">Macho</label>
 		                    </div>
 							<div class="form-group">
 								<label for="">Distrito</label>
@@ -86,6 +86,7 @@
 							      <div class="modal-body">
 							        {{ elements.getImgCloud(mascota.urlFoto, ['class': 'img-responsive', 'width': '568', 'height': '300', 'crop': 'pad']) }}
 							        <br>
+							        <b>Dueño: </b> {{ mascota.dueno }} <br>
 									<b>Descripcion: </b> <p>{{ mascota.descripcion }}</p>	
 									<b>Raza: </b> {{ mascota.raza }} <br>
 									<b>Sexo: </b> {{ mascota.sexo }} <br>

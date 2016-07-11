@@ -1,11 +1,53 @@
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.6&appId=200140426987807";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
+<script>
+	// This is called with the results from from FB.getLoginStatus().
+	  function statusChangeCallback(response) {
+	    console.log('statusChangeCallback');
+	    console.log(response);
+	    if (response.status === 'connected') {
+	      testAPI();
+	    } else if (response.status === 'not_authorized') {
+	    } else {
+	    }
+	  }
+
+	  function checkLoginState() {
+	    FB.getLoginStatus(function(response) {
+	      statusChangeCallback(response);
+	    });
+	  }
+
+	  window.fbAsyncInit = function() {
+		  FB.init({
+		    appId      : '200140426987807',
+		    cookie     : true,
+		    xfbml      : true,
+		    version    : 'v2.2'
+		  });
+
+		  /*FB.getLoginStatus(function(response) {
+		    statusChangeCallback(response);
+		  });*/
+	  };
+
+	  // Load the SDK asynchronously
+	  (function(d, s, id) {
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) return;
+	    js = d.createElement(s); js.id = id;
+	    js.src = "//connect.facebook.net/en_US/sdk.js";
+	    fjs.parentNode.insertBefore(js, fjs);
+	  }(document, 'script', 'facebook-jssdk'));
+
+	  function testAPI() {
+	    FB.api('/me', 'GET', {fields: 'first_name, last_name, name, id, email, gender'}, function(response) {
+	      //alert('Successful login for: ' + response.name);
+	      $.post("<?php echo $this->url->get('sesion/fbLogin') ?>", {nombre:response.first_name,email:response.email,apellido:response.last_name,genero:response.gender}, function(data)
+			{
+			 	window.location = "<?php echo $this->url->get('cuenta/index') ?>";
+		    })
+	    });
+	  }
 </script>
 {{ content() }}
 
@@ -31,8 +73,14 @@
 					{{ link_to('registro', 'Registrarse', 'class': 'btn btn-primary col-sm-5') }}
 					{{ submit_button('Iniciar Sesion', 'class': 'btn btn-primary col-sm-5 col-sm-offset-2') }}
 				</div>
+				
+				<div class="form-group">
+					<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+					</fb:login-button>
+				</div>
 			{{ end_form() }}
-			<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
+
+			
 		</div>
 	</div>
 </div>

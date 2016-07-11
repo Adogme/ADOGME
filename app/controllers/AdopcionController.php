@@ -20,6 +20,9 @@ class AdopcionController extends ControllerBase
 
 		foreach ($usuarios as $usuario) {
 			foreach ($usuario->listMascotas() as $um) {
+				$um = (array)$um;
+				$um['dueno'] = $usuario->albergue?$usuario->albergue:$usuario->nombre.' '.$usuario->apellido;
+				$um = (object)$um;
 				$mascotas[] = $um;
 			}
 		}

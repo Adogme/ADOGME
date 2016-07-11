@@ -59,6 +59,22 @@ class CuentaController extends ControllerBase
 				$usuario->mascotas[] = $mascota->toArray();
 
 				if ($usuario->save()) {
+					$page_access_token = 'EAAC2BtMOSR8BAM5tETZCgZBgp7exsy82ZCSBZCc2ZAouwsZALDnxBK8mBsGWTUWhXeuf4AYx4I0iBYDnpT42minoAr412TJgqXa8m4fei7eolsCP744IDqqZCI9p1LuAD9vNxvJyC8T6WRHGdWsGpGq1pmwt9ZCcz7CaVar3ozJ7hgZDZD';
+					$page_id = '598624690319645';
+
+					try {
+				  		$args = array(
+						    'access_token' => $page_access_token,
+						    'message' => 'Mira esta nueva mascota en adopción!',
+						    'picture' => 'http://res.cloudinary.com/ddc4n6gua/image/upload/'.$mascota->urlFoto,
+						    'link' => 'https://adogme.herokuapp.com/adopcion/index',
+						    'description' => $mascota->descripcion
+					  	);
+					  	$post_id = $this->fb->post("/598624690319645/feed", $args, $page_access_token);
+					} catch (FacebookApiException $e) {
+					  die($e->getMessage());
+					}
+
 					return $this->forward('cuenta/listarMascotas');
 				} else {
 					foreach ($usuario->getMessages() as $message) {

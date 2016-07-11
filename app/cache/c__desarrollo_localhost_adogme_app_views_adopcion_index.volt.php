@@ -32,24 +32,24 @@
 		                        <label>Tamaño</label>
 		                    </div>
 		                    <div class="form-group">
-		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro" value="S"><?php echo $this->tag->image(array('img/dog-TS.png', 'height' => '25px', 'style' => 'margin-top:-10px')); ?></label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro"  value="M"><?php echo $this->tag->image(array('img/dog-TM.png', 'height' => '29px', 'style' => 'margin-top:-10px')); ?></label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="tamañoPerro"  value="L"><?php echo $this->tag->image(array('img/dog-TL.png', 'height' => '33px', 'style' => 'margin-top:-10px')); ?></label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="tamañoPerro" value="S"><?php echo $this->tag->image(array('img/dog-TS.png', 'height' => '25px', 'style' => 'margin-top:-10px')); ?></label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="tamañoPerro"  value="M"><?php echo $this->tag->image(array('img/dog-TM.png', 'height' => '29px', 'style' => 'margin-top:-10px')); ?></label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="tamañoPerro"  value="L"><?php echo $this->tag->image(array('img/dog-TL.png', 'height' => '33px', 'style' => 'margin-top:-10px')); ?></label>
 		                    </div>
 		                    <div class="form-group">
 		                        <label>Pelo</label>
 		                    </div>
 		                    <div class="form-group">
-		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro" value="S"><?php echo $this->tag->image(array('img/dog-PS.png', 'height' => '32px', 'style' => 'margin-top:-10px')); ?></label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro"  value="M"><?php echo $this->tag->image(array('img/dog-PM.png', 'height' => '32px', 'style' => 'margin-top:-10px')); ?></label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="peloPerro"  value="L"><?php echo $this->tag->image(array('img/dog-PL.png', 'height' => '32px', 'style' => 'margin-top:-10px')); ?></label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="peloPerro" value="S"><?php echo $this->tag->image(array('img/dog-PS.png', 'height' => '32px', 'style' => 'margin-top:-10px')); ?></label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="peloPerro"  value="M"><?php echo $this->tag->image(array('img/dog-PM.png', 'height' => '32px', 'style' => 'margin-top:-10px')); ?></label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="peloPerro"  value="L"><?php echo $this->tag->image(array('img/dog-PL.png', 'height' => '32px', 'style' => 'margin-top:-10px')); ?></label>
 		                    </div>
 		                    <div class="form-group">
 		                        <label>Sexo</label>
 		                    </div>
 		                    <div class="form-group">
-		                        <label class="checkbox-inline"><input type="checkbox" name="sexoPerro"  value="H">Hembra</label>
-		                        <label class="checkbox-inline"><input type="checkbox" name="sexoPerro"  value="M">Macho</label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="sexoPerro"  value="H">Hembra</label>
+		                        <label class="checkbox-inline"><input type="checkbox" checked="true" name="sexoPerro"  value="M">Macho</label>
 		                    </div>
 							<div class="form-group">
 								<label for="">Distrito</label>
@@ -84,6 +84,7 @@
 							      <div class="modal-body">
 							        <?php echo $this->elements->getImgCloud($mascota->urlFoto, array('class' => 'img-responsive', 'width' => '568', 'height' => '300', 'crop' => 'pad')); ?>
 							        <br>
+							        <b>Dueño: </b> <?php echo $mascota->dueno; ?> <br>
 									<b>Descripcion: </b> <p><?php echo $mascota->descripcion; ?></p>	
 									<b>Raza: </b> <?php echo $mascota->raza; ?> <br>
 									<b>Sexo: </b> <?php echo $mascota->sexo; ?> <br>

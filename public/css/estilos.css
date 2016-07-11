@@ -107,3 +107,27 @@ a.icon-block span {
 	background-color:#800000;
 	border-color:#660000;
 }
+
+.btn-registro-usuario {
+	cursor: pointer;
+	background: #90C3D4;
+	height: 200px;
+	border-radius: 25px;
+	text-align: center;
+}
+
+.btn-registro-usuario:hover {
+	background: #80AEBD;
+}
+
+.btn-registro-albergue {
+	cursor: pointer;
+	background: #E3815F;
+	height: 200px;
+	border-radius: 25px;
+	text-align: center;
+}
+
+.btn-registro-albergue:hover {
+	background: #CC7354;
+}

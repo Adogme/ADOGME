@@ -50,8 +50,8 @@ class SecurityPlugin extends Plugin
 			//Public area resources
 			$publicResources = array(
 				'index'      => array('index'),
-				'registro'   => array('index', 'ajaxCiudad', 'ajaxPais', 'ajaxDistrito'),
-				'sesion'     => array('index', 'login'),
+				'registro'   => array('index', 'usuario', 'albergue', 'ajaxCiudad', 'ajaxPais', 'ajaxDistrito'),
+				'sesion'     => array('index', 'login', 'fbLogin'),
 				'adopcion'	 => array('index')
 			);
 			foreach ($publicResources as $resource => $actions) {

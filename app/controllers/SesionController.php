@@ -17,10 +17,17 @@ class SesionController extends ControllerBase
 
     private function _registrarSesion(Usuarios $usuario)
     {
-        $this->session->set('auth', array(
-                'email'   => $usuario->email,
-                'nombre' => $usuario->nombre
-        ));
+        if($usuario->albergue) {
+            $this->session->set('auth', array(
+                    'email'   => $usuario->email,
+                    'nombre' => $usuario->albergue
+            ));
+        } else {
+            $this->session->set('auth', array(
+                    'email'   => $usuario->email,
+                    'nombre' => $usuario->nombre
+            ));
+        }
     }
 
     public function loginAction()
@@ -57,6 +64,29 @@ class SesionController extends ControllerBase
         $this->session->remove('auth');
         $this->flash->success('Goodbye!');
         return $this->forward('sesion/index');
+    }
+
+    public function fbLoginAction()
+    {
+        $usuario = Usuarios::findFirst(
+            array(
+                "conditions" => array(
+                    'email' => $this->request->getPost('email')
+                )
+            )
+        );
+
+        if(!$usuario) {
+            $usuario = new Usuarios();
+            $usuario->nombre = $this->request->getPost('nombre');
+            $usuario->apellido = $this->request->getPost('apellido');
+            $usuario->email = $this->request->getPost('email');
+            $usuario->sexo = $this->request->getPost('genero')=='male'?'H':'M';
+            unset($usuario->password);
+            $usuario->save();
+        }
+        
+        $this->_registrarSesion($usuario);
     }
 }
 

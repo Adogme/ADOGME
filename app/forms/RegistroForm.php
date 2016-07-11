@@ -132,5 +132,15 @@ class RegistroForm extends Form
         $fechaNacimiento = new Date('fechaNacimiento');
         $fechaNacimiento->setLabel('Fecha Nacimiento');
         $this->add($fechaNacimiento);
+
+        //Nombre del albergue
+        $albergue = new Text('albergue', array('placeholder' => 'Nombre albergue'));
+        $albergue->setFilters(array('striptags', 'string', 'trim'));
+        $albergue->addValidators(array(
+            new PresenceOf(array(
+                'message' => 'Nombre de albergue obligatorio'
+            ))
+        ));
+        $this->add($albergue);
     }
 }

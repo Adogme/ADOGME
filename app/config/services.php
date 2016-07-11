@@ -153,3 +153,13 @@ $di->set('mail', function () use ($config) {
     $mail = new \Phalcon\Ext\Mailer\Manager($mailer);
     return $mail;
 });
+
+$di->set('fb', function () {
+    $fb = [
+        'app_id'                => '200140426987807',
+        'app_secret'            => '7874a9894315d7c1a5de5ef55b37e63c',
+        'default_graph_version' => 'v2.3'
+    ];
+
+    return new Facebook\Facebook($fb);
+});
