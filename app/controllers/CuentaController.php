@@ -67,7 +67,7 @@ class CuentaController extends ControllerBase
 						    'access_token' => $page_access_token,
 						    'message' => 'Mira esta nueva mascota en adopción!',
 						    'picture' => 'http://res.cloudinary.com/ddc4n6gua/image/upload/'.$mascota->urlFoto,
-						    'link' => 'https://adogme.herokuapp.com/adopcion/index',
+						    'link' => 'https://adogme.herokuapp.com/adopcion/index/'.$mascota->urlFoto,
 						    'description' => $mascota->descripcion
 					  	);
 					  	$post_id = $this->fb->post("/598624690319645/feed", $args, $page_access_token);

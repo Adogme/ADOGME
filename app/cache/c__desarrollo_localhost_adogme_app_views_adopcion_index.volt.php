@@ -120,6 +120,14 @@
 <script>
 	$(document).ready(function(){
 
+		<?php if ($seleccion) { ?>
+			//alert('hay seleccion '+ <?php echo $seleccion; ?> );
+			$('#modal<?php echo $seleccion; ?>').modal('show');
+			//$('#modaldsisdext6fgx3lvwswnf').modal('show');
+		<?php } else { ?>
+			//alert('no hay seleccion');
+		<?php } ?>
+
 	    $(".btn-adopcion").click(function(e){
 	    	<?php if ($this->session->get('auth') == null) { ?>
 	    		window.location = "<?php echo $this->url->get('sesion/index') ?>";

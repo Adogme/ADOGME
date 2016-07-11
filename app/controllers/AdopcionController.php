@@ -8,7 +8,7 @@ class AdopcionController extends ControllerBase
         parent::initialize();
 	}
 
-	public function indexAction()
+	public function indexAction($seleccion=null)
 	{
 		$usuarios = Usuarios::find(
 			array(
@@ -28,6 +28,11 @@ class AdopcionController extends ControllerBase
 		}
 
 		$this->view->mascotas = $mascotas;
+		if($seleccion) {
+			$this->view->seleccion = $seleccion;
+		} else {
+			$this->view->seleccion = null;
+		}
 	}
 
 	public function adoptarAction()

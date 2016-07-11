@@ -122,6 +122,13 @@
 <script>
 	$(document).ready(function(){
 
+		{% if seleccion %}
+			//alert('hay seleccion '+ {{ seleccion }} );
+			$('#modal{{ seleccion }}').modal('show');
+		{% else %}
+			//alert('no hay seleccion');
+		{% endif %}
+
 	    $(".btn-adopcion").click(function(e){
 	    	{% if session.get('auth') == null %}
 	    		window.location = "<?php echo $this->url->get('sesion/index') ?>";
