@@ -1,3 +1,5 @@
 {{ elements.getLeftBar() }}
 
-{{ content() }}
+<div class="contenido-principal">
+	{{ content() }}
+</div>

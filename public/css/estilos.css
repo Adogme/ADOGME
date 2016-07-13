@@ -37,8 +37,10 @@ body {
 	outline: 0;
 }
 
-#contenido {
-
+.contenido-principal {
+	position: relative;
+	margin-left: 100px;
+	min-height: 100%;
 }
 
 #fomulario-login {

@@ -1,3 +1,5 @@
 <?php echo $this->elements->getLeftBar(); ?>
 
-<?php echo $this->getContent(); ?>
+<div class="contenido-principal">
+	<?php echo $this->getContent(); ?>
+</div>
