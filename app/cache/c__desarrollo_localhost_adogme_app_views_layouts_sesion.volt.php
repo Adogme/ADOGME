@@ -1,1 +1,3 @@
-<?php echo $this->getContent(); ?>
+<div class="container">
+	<?php echo $this->getContent(); ?>
+</div>

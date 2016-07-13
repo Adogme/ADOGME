@@ -41,6 +41,9 @@ body {
 	position: relative;
 	margin-left: 100px;
 	min-height: 100%;
+	padding-left: 35px;
+	padding-top: 35px;
+	padding-right: 35px;
 }
 
 #fomulario-login {

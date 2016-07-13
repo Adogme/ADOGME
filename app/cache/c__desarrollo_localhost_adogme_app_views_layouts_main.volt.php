@@ -19,6 +19,5 @@
     </header>
 </div>
 
-<div class="container">
-    <?php echo $this->getContent(); ?>
-</div>
+<?php echo $this->getContent(); ?>
+
