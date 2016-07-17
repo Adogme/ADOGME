@@ -17,10 +17,27 @@
 					{{ form.render('raza', ['class': 'form-control']) }}
 				</div>
 
-				<div class="form-group form-inline">
-					{{ form.render('peso', ['class': 'form-control']) }}
-					{{ form.render('altura', ['class': 'form-control']) }}
-					{{ form.render('edad', ['class': 'form-control']) }}
+				<div class="form-group col-md-3">
+					<div class="input-group">
+						{{ form.render('peso', ['class': 'form-control', 'aria-describedby': 'basic-addon1']) }}
+						<span class="input-group-addon" id="basic-addon1">kg.</span>
+					</div>
+				</div>
+				<div class="form-group col-md-3">
+					<div class="input-group">
+						{{ form.render('altura', ['class': 'form-control', 'aria-describedby': 'basic-addon2']) }}
+						<span class="input-group-addon" id="basic-addon2">m.</span>
+					</div>
+				</div>
+				<div class="form-group col-md-3">
+					<div class="input-group">
+						{{ form.render('edad', ['class': 'form-control']) }}
+					</div>
+				</div>
+				<div class="form-group col-md-3">
+					<div class="input-group">
+						{{ form.render('meses', ['class': 'form-control', 'min': '0', 'max': '11']) }}
+					</div>
 				</div>
 
 				<div class="form-group">
@@ -29,16 +46,22 @@
 
 				<div class="form-group form-inline">
 					Tamaño de pelo:
-					{{ form.label('small') }} {{ form.render('small', ['class': 'form-control']) }}
-					{{ form.label('medium') }} {{ form.render('medium', ['class': 'form-control']) }}
-					{{ form.label('large') }} {{ form.render('large', ['class': 'form-control']) }}
-					{{ form.label('vacuna') }} {{ form.render('vacuna', ['class': 'form-control']) }}
+					{{ form.render('small', ['class': 'form-control']) }} {{ form.label('small') }}
+					{{ form.render('medium', ['class': 'form-control']) }} {{ form.label('medium') }}
+					{{ form.render('large', ['class': 'form-control']) }} {{ form.label('large') }}
+				</div>
+
+				<div class="form-group form-inline">
+					Vacunas: <br>
+					{{ form.render('rabia', ['class': 'form-control']) }} {{ form.label('rabia') }} <br>
+					{{ form.render('rabia', ['class': 'form-control']) }} {{ form.label('distemper') }} <br>
+					{{ form.render('rabia', ['class': 'form-control']) }} {{ form.label('polivalente') }}
 				</div>
 
 				<div class="form-group form-inline">
 					Sexo:  
-					{{ form.label('macho')}} {{ form.render('macho', ['class': 'form-control'])}}
-					{{ form.label('hembra')}} {{ form.render('hembra', ['class': 'form-control'])}}
+					{{ form.render('macho', ['class': 'form-control'])}} {{ form.label('macho')}}
+					{{ form.render('hembra', ['class': 'form-control'])}} {{ form.label('hembra')}}
 				</div>
 
 			    <div id='direct_upload'>

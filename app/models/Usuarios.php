@@ -18,6 +18,7 @@ class Usuarios extends Collection
     public $sexo;
     public $fechaRegistro;
     public $mascotas = array();
+    public $favoritos = array();
 
 	public function getSource()
     {
@@ -40,13 +41,22 @@ class Usuarios extends Collection
             'direccion' => 'direccion',
             'sexo' => 'sexo',
             'fechaRegistro' => 'fechaRegistro',
-            'mascotas' => 'mascotas'
+            'mascotas' => 'mascotas',
+            'favoritos' => 'favoritos'
         );
     }
 
     public function beforeCreate() {
         $datetime = new DateTime("now", new DateTimeZone('America/Lima'));
         $this->fechaRegistro = $datetime->format('Y-m-d H:i:s');
+    }
+
+    public function beforeSave() {
+        if(isset($albergue)) {
+            $this->unsetPersona();
+        } else {
+            $this->unsetAlbergue();
+        }
     }
 
     public function listMascotas() { //Devuelve lista de objetos Mascotas
@@ -57,14 +67,20 @@ class Usuarios extends Collection
             $m->nombre = $mascota['nombre'];
             $m->raza = $mascota['raza'];
             $m->peso = $mascota['peso'];
+            $m->sexo = $mascota['sexo'];
             $m->altura = $mascota['altura'];
             $m->edad = $mascota['edad'];
+            $m->meses = $mascota['meses'];
             $m->descripcion = $mascota['descripcion'];
             $m->pelo = $mascota['pelo'];
+            $m->caracteristicas = $mascota['caracteristicas'];
             $m->vacuna = $mascota['vacuna'];
-            $m->sexo = $mascota['sexo'];
             $m->urlFoto = $mascota['urlFoto'];
             $m->colaAdoptantes = $mascota['colaAdoptantes'];
+            $m->estado = $mascota['estado'];
+            $m->historial = $mascota['historial'];
+            $m->fechaObtencion = $mascota['fechaObtencion'];
+            $m->fechaRegistro = $mascota['fechaRegistro'];
 
             $mascotas[] = $m;
         }
@@ -152,5 +168,36 @@ class Usuarios extends Collection
         }
 
         return $mascotas;
+    }
+
+    public function unsetPersona() {
+        unset($this->albergue);
+    }
+
+    public function unsetAlbergue() {
+        unset($this->fechaNacimiento);
+        unset($this->sexo);
+    }
+
+    public function getPostulantes($mascota) {
+        $adoptantes = array();
+
+        foreach ($mascota->colaAdoptantes as $adoptante) {
+            $usuario = Usuarios::findFirst(
+                array(
+                    'conditions' => array(
+                        'email' => $adoptante
+                    ),
+                    'fields' => array(
+                        'nombre' => true,
+                        'apellido' => true
+                    )
+                )
+            );
+
+            $adoptantes[] = $usuario;
+        }
+
+        return $adoptantes;
     }
 }

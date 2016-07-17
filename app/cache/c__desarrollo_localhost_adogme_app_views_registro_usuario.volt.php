@@ -7,7 +7,7 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">Registro de Usuario</div>
 		<div class="panel-body">
-			<?php echo $this->tag->form(array('registro', 'id' => 'registroForm', 'method' => 'post')); ?>
+			<?php echo $this->tag->form(array('registro/usuario', 'id' => 'registroForm', 'method' => 'post')); ?>
 				<div class="form-group col-md-6">
 					<?php echo $form->render('nombre', array('class' => 'form-control')); ?>
 				</div>

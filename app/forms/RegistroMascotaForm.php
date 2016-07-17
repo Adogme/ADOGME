@@ -8,6 +8,7 @@ use Phalcon\Forms\Element\Radio;
 use Phalcon\Forms\Element\Check;
 use Phalcon\Forms\Element\Date;
 use Phalcon\Forms\Element\File;
+use Phalcon\Forms\Element\TextArea;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\Confirmation;
@@ -39,43 +40,51 @@ class RegistroMascotaForm extends Form
 		$altura = new Numeric('altura', array('placeholder' => 'Altura'));
 		$this->add($altura);
 
-		//Edad
-		$edad = new Numeric('edad', array('placeholder' => 'Edad'));
+		//Años
+		$edad = new Numeric('edad', array('placeholder' => 'años'));
 		$this->add($edad);
 
+		//Meses
+		$meses = new Numeric('meses', array('placeholder' => 'meses'));
+		$this->add($meses);
+
 		//Descripcion
-		$descripcion = new Text('descripcion', array('placeholder' => 'Descripcion'));
+		$descripcion = new TextArea('descripcion', array('placeholder' => 'Descripcion', 'rows' => '5'));
 		$raza->setFilters(array('string', 'trim'));
 		$this->add($descripcion);
 
 		//Pelo
 		$peloS = new Radio('small', array('name' => 'pelo', 'value' => 'S'));
-        $peloS->setLabel('S');
+        $peloS->setLabel('Corto');
         $this->add($peloS);
 
         $peloM = new Radio('medium', array('name' => 'pelo', 'value' => 'M'));
-        $peloM->setLabel('M');
+        $peloM->setLabel('Mediano');
         $this->add($peloM);
 
         $peloL = new Radio('large', array('name' => 'pelo', 'value' => 'L'));
-        $peloL->setLabel('L');
+        $peloL->setLabel('Largo');
         $this->add($peloL);
 
 		//Vacuna
-		$vacuna = new Check('vacuna', array('value' => '1'));
-		$vacuna->setLabel('Vacuna');
-		$this->add($vacuna);
+		$rabia = new Check('rabia', array('name' => 'vacuna', 'value' => 'rabia'));
+		$rabia->setLabel('Rabia');
+		$this->add($rabia);
+
+		$distemper = new Check('distemper', array('name' => 'vacuna', 'value' => 'distemper'));
+		$distemper->setLabel('Distemper');
+		$this->add($distemper);
+
+		$polivalente = new Check('polivalente', array('name' => 'vacuna', 'value' => 'polivalente'));
+		$polivalente->setLabel('Polivalente');
+		$this->add($polivalente);
 
 		//Sexo
 		$macho = new Radio('macho', array('name' => 'sexo', 'value' => 'Macho'));
-		$macho->setLabel('M');
+		$macho->setLabel('Macho');
 		$hembra = new Radio('hembra', array('name' => 'sexo', 'value' => 'Hembra'));
-		$hembra->setLabel('H');
+		$hembra->setLabel('Hembra');
 		$this->add($macho);
 		$this->add($hembra);
-
-		//Enfermedades
-
-
 	}
 }

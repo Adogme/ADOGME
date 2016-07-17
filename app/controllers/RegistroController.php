@@ -30,7 +30,6 @@ class RegistroController extends ControllerBase
 
                 $usuario->sexo = $this->request->getPost('sexo');
                 unset($usuario->repeatPassword);
-                unset($usuario->albergue);
                 $usuario->password = $this->security->hash($usuario->password);
                 
                 if ($usuario->save() == false) {
@@ -66,8 +65,6 @@ class RegistroController extends ControllerBase
 
                 $usuario->sexo = $this->request->getPost('sexo');
                 unset($usuario->repeatPassword);
-                unset($usuario->sexo);
-                unset($usuario->fechaNacimiento);
                 $usuario->password = $this->security->hash($usuario->password);
                 
                 if ($usuario->save() == false) {
