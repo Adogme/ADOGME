@@ -227,4 +227,9 @@ class CuentaController extends ControllerBase
 			
 		}
 	}
+
+	public function panelAction()
+	{
+		
+	}
 }

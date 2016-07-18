@@ -39,7 +39,7 @@ class SecurityPlugin extends Plugin
 
 			//Private area resources
 			$privateResources = array(
-				'cuenta'    => array('index', 'listarAdopciones', 'listarFavoritos', 'listarMascotas', 'registrarMascota', 'editarMascota', 'editarEstado', 'postearFB'),
+				'cuenta'    => array('index', 'listarAdopciones', 'listarFavoritos', 'listarMascotas', 'registrarMascota', 'editarMascota', 'editarEstado', 'postearFB', 'panel'),
 				'sesion'	=> array('logout'),
 				'adopcion'	 => array('adoptar', 'desadoptar')
 			);

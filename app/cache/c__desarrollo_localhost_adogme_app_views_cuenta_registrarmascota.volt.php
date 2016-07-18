@@ -26,7 +26,7 @@
 				<div class="form-group col-md-3">
 					<div class="input-group">
 						<?php echo $form->render('altura', array('class' => 'form-control', 'aria-describedby' => 'basic-addon2')); ?>
-						<span class="input-group-addon" id="basic-addon2">m.</span>
+						<span class="input-group-addon" id="basic-addon2">cm.</span>
 					</div>
 				</div>
 				<div class="form-group col-md-3">

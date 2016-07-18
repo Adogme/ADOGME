@@ -40,7 +40,7 @@
                         </div> <!-- text-right / end -->
                     </a>
                     <?php echo $this->tag->linkTo(array('cuenta/editarMascota/' . $mascota->nombre, '<i class="glyphicon glyphicon-edit"></i> Editar mascota', 'class' => 'btn btn-primary')); ?>
-                </div> 
+                </div>
         </div>
         <div class="col-md-5">
 

@@ -21,6 +21,7 @@
         {{ javascript_include('js/jquery.iframe-transport.js') }}
         {{ javascript_include('js/jquery.fileupload.js') }}
         {{ javascript_include('js/jquery.cloudinary.js') }}
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
         <meta name="author" content="kyo">
     </head>
     <body>
